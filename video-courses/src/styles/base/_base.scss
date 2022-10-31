@@ -1,0 +1,13 @@
+@use "../helpers/variables" as *;
+
+html {
+  font-size: $font-size;
+}
+
+body {
+  min-height: $min-height;
+  font-family: $font-family;
+  color: $primary-color;
+  background-color: $primary-bg-color;
+  line-height: $line-height;
+}
