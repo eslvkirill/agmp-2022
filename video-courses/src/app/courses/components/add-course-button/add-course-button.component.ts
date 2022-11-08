@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-course-button',
   templateUrl: './add-course-button.component.html',
   styleUrls: ['./add-course-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddCourseButtonComponent implements OnInit {
   constructor() {}
