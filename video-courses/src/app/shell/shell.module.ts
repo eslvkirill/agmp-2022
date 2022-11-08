@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreComponent } from './core.component';
+import { ShellComponent } from './shell.component';
 import { HeaderModule } from './header/header.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [CoreComponent, BreadcrumbComponent, FooterComponent],
+  declarations: [ShellComponent, BreadcrumbComponent, FooterComponent],
   imports: [CommonModule, HeaderModule],
-  exports: [CoreComponent, BreadcrumbComponent, FooterComponent],
+  exports: [ShellComponent, BreadcrumbComponent, FooterComponent],
 })
-export class CoreModule {}
+export class ShellModule {}
