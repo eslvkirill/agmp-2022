@@ -1,0 +1,15 @@
+@use "../../../styles/helpers" as *;
+
+.footer {
+  @include flex-vertical();
+  justify-content: flex-end;
+  height: 70px;
+  margin-top: 20px;
+  background-color: $shell-bg-color;
+  color: $secondary-color;
+
+  &__copyright {
+    margin-right: 90px;
+    color: $footer-color;
+  }
+}

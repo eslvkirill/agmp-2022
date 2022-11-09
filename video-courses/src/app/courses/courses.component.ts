@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ButtonType } from '../shared/enums/button.enum';
 
 @Component({
   selector: 'app-courses',
@@ -6,10 +7,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CoursesComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log('app-courses');
-  }
+export class CoursesComponent {
+  readonly buttonType = ButtonType.Add;
 }

@@ -1,0 +1,11 @@
+@use "../../styles//helpers/variables" as *;
+
+.shell {
+  min-height: $min-height;
+  display: flex;
+  flex-direction: column;
+
+  .footer {
+    margin-top: auto;
+  }
+}

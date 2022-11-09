@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { COURSES } from '../../constants/index';
+import { CourseInfo } from '../../types';
 
 @Component({
   selector: 'app-courses-list',
@@ -7,9 +9,21 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesListComponent implements OnInit {
-  constructor() {}
+  courses: CourseInfo[];
 
   ngOnInit(): void {
-    console.log('app-courses-list');
+    this.courses = COURSES;
+  }
+
+  trackByFn(index: number, course: CourseInfo): string {
+    return course.id;
+  }
+
+  onEdit(course: any): void {
+    console.log('Edit: ', course.id);
+  }
+
+  onDelete(course: any): void {
+    console.log('Delete: ', course.id);
   }
 }

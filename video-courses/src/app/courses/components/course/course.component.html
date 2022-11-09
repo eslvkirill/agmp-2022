@@ -1,1 +1,36 @@
-<p>course works!</p>
+<div class="course">
+  <div class="course__content content">
+    <div class="content__wrapper">
+      <div class="content__title">{{ course.title }}</div>
+      <div class="content__datetime datetime">
+        <div class="datetime__time time">
+          <fa-icon
+            [icon]="timeIcon"
+            class="time__icon"
+          ></fa-icon>
+          <div class="time__value">{{ course.duration }}</div>
+        </div>
+        <div class="datetime__date date">
+          <fa-icon
+            [icon]="dateIcon"
+            class="date__icon"
+          ></fa-icon>
+          <div class="date_value">{{ course.creationDate | date: datePipe }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="content__description">{{ course.description }}</div>
+  </div>
+  <div class="course__actions actions">
+    <div 
+      class="actions__item"
+      *ngFor="let button of actionButtons; trackBy: trackByFn"
+    >
+      <app-button
+        [text]="button.text"
+        [type]="button.type"
+        (click)="button.action(course)"
+      ></app-button>
+    </div>
+  </div>
+</div>

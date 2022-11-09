@@ -1,4 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import {
+  faPlus,
+  faPencil,
+  faTrash,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
+import { ButtonType } from '../../enums';
 
 @Component({
   selector: 'app-button',
@@ -7,9 +19,25 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent implements OnInit {
-  constructor() {}
+  @Input() text: string;
+  @Input() type: ButtonType = ButtonType.Common;
+
+  icon: IconDefinition | null;
 
   ngOnInit(): void {
-    console.log('app-button');
+    this.icon = this.getIcon();
+  }
+
+  private getIcon(): IconDefinition | null {
+    switch (this.type) {
+      case ButtonType.Add:
+        return faPlus;
+      case ButtonType.Edit:
+        return faPencil;
+      case ButtonType.Delete:
+        return faTrash;
+      default:
+        return null;
+    }
   }
 }

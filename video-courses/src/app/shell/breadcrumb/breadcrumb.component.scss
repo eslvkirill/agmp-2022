@@ -1,0 +1,13 @@
+@use "../../../styles//helpers" as *;
+
+.breadcrumb {
+  @include flex-vertical();
+  height: 70px;
+  padding-left: 90px;
+  font-size: 20px;
+  background-color: $secondary-bg-color;
+
+  &__item {
+    cursor: pointer;
+  }
+}

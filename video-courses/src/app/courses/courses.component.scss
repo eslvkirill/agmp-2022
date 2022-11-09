@@ -1,0 +1,13 @@
+@use "../../styles/helpers" as *;
+
+.add-course {
+  @include flex-vertical();
+  height: 38px;
+  border-radius: 3px;
+  background: $button-primary-bg-color;
+
+  &:hover {
+    transform: scale(0.97);
+    transition: 0.3s;
+  }
+}
