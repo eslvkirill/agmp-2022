@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { START_PAGE_URL } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-logo',
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogoComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log('app-logo');
-  }
+export class LogoComponent {
+  readonly startPageUrl = START_PAGE_URL;
 }

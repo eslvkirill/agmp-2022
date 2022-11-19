@@ -1,4 +1,9 @@
+@use "../../../styles/helpers" as *;
+
 .header {
-  display: flex;
-  justify-content: space-around;
+  @include flex-vertical();
+  justify-content: space-between;
+  padding: 20px 60px 20px 90px;
+  background-color: $shell-bg-color;
+  color: $secondary-color;
 }

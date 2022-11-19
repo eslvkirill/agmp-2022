@@ -1,0 +1,32 @@
+@use "../../../../../styles/helpers/mixins" as *;
+
+.auth {
+  @include flex-vertical();
+
+  &__login,
+  &__logoff {
+    @include flex-vertical();
+    cursor: pointer;
+  }
+
+  .login,
+  .logoff {
+    &__label {
+      margin-left: 6px;
+    }
+  }
+
+  .login {
+    margin-right: 20px;
+
+    &__icon {
+      font-size: 18px;
+    }
+  }
+
+  .logoff {
+    &__icon {
+      font-size: 20px;
+    }
+  }
+}

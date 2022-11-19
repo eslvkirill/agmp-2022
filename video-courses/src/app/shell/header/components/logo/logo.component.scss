@@ -1,0 +1,20 @@
+@use "../../../../../styles/helpers" as *;
+
+.logo {
+  @include flex-vertical();
+  color: $secondary-color;
+  text-decoration: none;
+
+  &__icon {
+    width: 55px;
+    cursor: pointer;
+  }
+
+  &__text {
+    margin-left: 6px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

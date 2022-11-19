@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShellModule } from './shell/shell.module';
 import { SharedModule } from './shared/shared.module';
-import { ModulesModule } from './modules/modules.module';
+import { CoursesModule } from './courses/courses.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +14,7 @@ import { ModulesModule } from './modules/modules.module';
     AppRoutingModule,
     ShellModule,
     SharedModule,
-    ModulesModule,
+    CoursesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

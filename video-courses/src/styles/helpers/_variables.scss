@@ -5,4 +5,23 @@ $font-family: "Comic Sans MS", arial;
 $font-size: var(--font-size-default);
 $line-height: 1.5;
 $primary-color: var(--black);
-$primary-bg-color: var(--white);
+$primary-bg-color: var(--grey-200);
+
+$secondary-color: var(--white);
+$secondary-bg-color: $secondary-color;
+
+$search-icon-color: var(--grey-400);
+
+$button-primary-bg-color: var(--light-blue-200);
+$button-secondary-bg-color: var(--green-200);
+
+$datetime-color: var(--grey-300);
+$description-color: var(--grey-600);
+
+$pagination-color: var(--light-blue-900);
+
+$shell-bg-color: var(--grey-900);
+
+$footer-color: $search-icon-color;
+
+$box-shadow: #0000001a 0px 4px 6px -1px, #0000000f 0px 2px 4px -1px;

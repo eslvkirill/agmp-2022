@@ -1,0 +1,8 @@
+<div *ngFor="let course of courses; trackBy: trackByFn">
+  <app-course
+    [course]="course"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)"
+  ></app-course>
+</div>
+<app-pagination></app-pagination>
