@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { START_PAGE_URL } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-logo',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./logo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogoComponent {}
+export class LogoComponent {
+  readonly startPageUrl = START_PAGE_URL;
+}
