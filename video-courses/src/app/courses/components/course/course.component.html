@@ -27,6 +27,7 @@
       *ngFor="let button of actionButtons; trackBy: trackByFn"
     >
       <app-button
+        [class]="button.text.toLowerCase()"
         [text]="button.text"
         [type]="button.type"
         (click)="button.action(course)"
