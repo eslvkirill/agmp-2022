@@ -1,25 +1,16 @@
 @use "../../../../styles/helpers" as *;
 
-:host {
-  background-color: $button-primary-bg-color;
+.button {
+  padding: 3px 14px;
+  color: $secondary-color;
+  background-color: inherit;
+  cursor: pointer;
 
-  .button {
-    padding: 3px 14px;
+  &__control {
+    border: none;
+    outline: none;
     color: $secondary-color;
-    background-color: inherit;
+    background: none;
     cursor: pointer;
-
-    &__control {
-      border: none;
-      outline: none;
-      color: $secondary-color;
-      background: none;
-      cursor: pointer;
-    }
-  }
-
-  &:hover {
-    transform: scale(0.97);
-    transition: 0.3s;
   }
 }
