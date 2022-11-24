@@ -1,6 +1,9 @@
 <app-shell>
   <main>
-    <app-search></app-search>
-    <app-courses class="courses"></app-courses>
+    <app-search (search)="onSearch($event)"></app-search>
+    <app-courses  
+      class="courses"
+      [courses]="courses"
+    ></app-courses>
   </main>
 </app-shell>

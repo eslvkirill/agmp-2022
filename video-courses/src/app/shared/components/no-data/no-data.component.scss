@@ -1,0 +1,10 @@
+@use "../../../../styles/helpers/variables" as *;
+
+.no-data {
+  border: 2px solid $primary-color;
+
+  &__message {
+    text-transform: uppercase;
+    cursor: default;
+  }
+}

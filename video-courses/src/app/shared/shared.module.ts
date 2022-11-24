@@ -1,16 +1,31 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchComponent } from './components/search/search.component';
-import { ButtonComponent } from './components/button/button.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { PaginationComponent } from './components/pagination/pagination.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-const COMPONENTS = [SearchComponent, ButtonComponent, PaginationComponent];
+import { ButtonComponent } from './components/button/button.component';
+import { NoDataComponent } from './components/no-data/no-data.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { SearchComponent } from './components/search/search.component';
+import { BorderColorDirective } from './directives/border-color/border-color.directive';
+import { DurationPipe } from './pipes/duration/duration.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
+import { OrderByPipe } from './pipes/order-by/order-by.pipe';
+
+const COMPONENTS = [
+  SearchComponent,
+  ButtonComponent,
+  PaginationComponent,
+  NoDataComponent,
+];
+const DIRECTIVES = [BorderColorDirective];
+const PIPES = [DurationPipe, OrderByPipe, FilterPipe];
+
+const exportedDeclarations = [...COMPONENTS, ...DIRECTIVES, ...PIPES];
 
 @NgModule({
-  declarations: COMPONENTS,
+  declarations: exportedDeclarations,
   imports: [CommonModule, FontAwesomeModule, FormsModule],
-  exports: COMPONENTS,
+  exports: exportedDeclarations,
 })
 export class SharedModule {}

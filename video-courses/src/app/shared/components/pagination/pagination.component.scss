@@ -1,14 +1,6 @@
 @use "../../../../styles/helpers" as *;
 
 .pagination {
-  @include flex-horizontal();
-  margin: 30px 0 60px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: $secondary-bg-color;
-  color: $primary-color;
-  box-shadow: $box-shadow;
-
   &__label {
     color: $pagination-color;
     text-transform: uppercase;
