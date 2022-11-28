@@ -23,15 +23,8 @@
   }
 
   &__button {
-    @include flex-vertical();
-    height: 43px;
-    border-radius: 3px;
+    padding: 3px 16px;
+    height: 41px;
     background-color: $button-secondary-bg-color;
-    transition: 0.3s;
-
-    &:hover {
-      transform: scale(0.97);
-      transition: 0.3s;
-    }
   }
 }
