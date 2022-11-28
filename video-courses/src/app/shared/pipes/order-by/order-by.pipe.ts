@@ -14,12 +14,12 @@ export class OrderByPipe implements PipeTransform {
 
     return [...courses].sort((a, b) => {
       const firstElement = a.creationDate.getTime();
-      const seconElement = b.creationDate.getTime();
+      const secondElement = b.creationDate.getTime();
 
-      if (firstElement > seconElement) {
+      if (firstElement > secondElement) {
         return order;
       }
-      if (seconElement > firstElement) {
+      if (secondElement > firstElement) {
         return -order;
       }
       return 0;
