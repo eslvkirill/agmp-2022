@@ -69,15 +69,6 @@
     width: 21%;
 
     &__item {
-      @include flex-vertical();
-      border-radius: 3px;
-      background: $button-primary-bg-color;
-
-      &:hover {
-        transform: scale(0.97);
-        transition: 0.3s;
-      }
-
       &:first-child {
         margin-right: 15px;
       }

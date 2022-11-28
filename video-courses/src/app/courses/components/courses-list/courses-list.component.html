@@ -4,6 +4,7 @@
 ></app-no-data>
 <div *ngFor="let course of courses | orderBy: orderDirection; trackBy: trackByFn">
   <app-course
+    class="course"
     [course]="course"
     (edit)="onEdit($event)"
     (delete)="onDelete($event)"
