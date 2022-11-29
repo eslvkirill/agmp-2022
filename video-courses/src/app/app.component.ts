@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { COURSES } from './courses/constants/courses.constants';
+import { CoursesService } from './courses/services/courses.service';
 import { CourseInfo } from './courses/types/course.interface';
 
 @Component({
@@ -9,10 +9,12 @@ import { CourseInfo } from './courses/types/course.interface';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  constructor(private coursesService: CoursesService) {}
+
   courses: CourseInfo[];
 
   ngOnInit(): void {
-    this.courses = COURSES;
+    this.courses = this.coursesService.getList();
   }
 
   onSearch(courses: CourseInfo[]): void {
