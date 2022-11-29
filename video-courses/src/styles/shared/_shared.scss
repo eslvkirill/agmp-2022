@@ -1,5 +1,17 @@
+@use "../helpers" as *;
+
 .text-ellipsis {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.empty-center-block {
+  @include flex-horizontal();
+  margin: 30px 0 60px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: $secondary-bg-color;
+  color: $primary-color;
+  box-shadow: $box-shadow;
 }

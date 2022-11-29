@@ -8,6 +8,7 @@
     class="search__input"
     placeholder="Text to search" 
     [(ngModel)]="searchValue"
+    (keydown.enter)="onSearch()"
   />
   <app-button
     class="search__button"

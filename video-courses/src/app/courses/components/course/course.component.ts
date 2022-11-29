@@ -6,7 +6,11 @@ import {
   Output,
 } from '@angular/core';
 import { CourseInfo, CourseAction } from '../../types';
-import { faClock, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import {
+  faClock,
+  faCalendarDays,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
 import { ButtonType } from '../../../shared/enums';
 
 @Component({
@@ -23,6 +27,7 @@ export class CourseComponent {
 
   readonly timeIcon = faClock;
   readonly dateIcon = faCalendarDays;
+  readonly starIcon = faStar;
   readonly datePipe = 'd MMM, y';
 
   readonly actionButtons: CourseAction[] = [

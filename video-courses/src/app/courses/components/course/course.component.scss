@@ -22,13 +22,12 @@
       justify-content: space-between;
     }
 
+    &__datetime,
     &__title {
-      font-weight: bold;
-      font-size: 23px;
+      @include flex-vertical();
     }
 
     &__datetime {
-      display: flex;
       color: $datetime-color;
 
       .time {
@@ -38,6 +37,19 @@
 
     &__description {
       color: $description-color;
+    }
+
+    .title {
+      &__name {
+        font-weight: bold;
+        font-size: 23px;
+      }
+
+      &__icon {
+        margin: 0 0 3px 10px;
+        font-size: 20px;
+        color: $title-icon-color;
+      }
     }
 
     .time,
@@ -62,4 +74,8 @@
       }
     }
   }
+}
+
+.top-rated-course {
+  background-color: $top-rated-course-bg-color;
 }

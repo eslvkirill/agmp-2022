@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { COURSES } from '../../constants/index';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { OrderDirection } from '../../../shared/enums/orderDirection.enum';
 import { CourseInfo } from '../../types';
 
 @Component({
@@ -8,12 +9,11 @@ import { CourseInfo } from '../../types';
   styleUrls: ['./courses-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CoursesListComponent implements OnInit {
-  courses: CourseInfo[];
+export class CoursesListComponent {
+  @Input() courses: CourseInfo[];
 
-  ngOnInit(): void {
-    this.courses = COURSES;
-  }
+  readonly noDataMessage = 'Feel free to add new course';
+  readonly orderDirection = OrderDirection.DESC;
 
   trackByFn(index: number, course: CourseInfo): string {
     return course.id;
