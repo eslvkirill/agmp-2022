@@ -1,20 +1,31 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { COURSES } from '../../constants/courses.constants';
 import { CourseInfo } from '../../types/course.interface';
 import { CoursesListComponent } from './courses-list.component';
+import { ModalService } from '../../../shared/services/modal/modal.service';
+import { CoursesService } from '../../services/courses.service';
+import { OrderByPipe } from '../../../shared/pipes/order-by/order-by.pipe';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
   let fixture: ComponentFixture<CoursesListComponent>;
   let expectedCourses: CourseInfo[];
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      declarations: [CoursesListComponent],
-    });
+      declarations: [CoursesListComponent, OrderByPipe],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+        { provide: ModalService, useValue: {} },
+        { provide: CoursesService, useValue: {} },
+      ],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CoursesListComponent);
     component = fixture.componentInstance;
 
@@ -28,16 +39,11 @@ describe('CoursesListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should courses initialized', () => {
-    component.ngOnInit();
-    expect(component.courses).toBe(COURSES);
-  });
-
-  it('should call onDelete method', () => {
-    const onDelete = spyOn(component, 'onDelete').and.callThrough();
-    component.onDelete(expectedCourses[0]);
-
-    expect(onDelete).toHaveBeenCalled();
+  it('should open dialog onDelete method', () => {
+    const modalDialogMock = jasmine.createSpyObj('ModalService', [
+      'openDialog',
+    ]);
+    modalDialogMock.openDialog.and.callThrough();
   });
 
   it('should call onEdit method', () => {

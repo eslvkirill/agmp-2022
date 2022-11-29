@@ -1,4 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { ModalConfig } from '../../../types';
@@ -8,6 +13,7 @@ import { MessageInformation } from '../../../types/modal.interface';
   selector: 'app-modal-wrapper',
   templateUrl: './modal-wrapper.component.html',
   styleUrls: ['./modal-wrapper.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalWrapperComponent<T> implements OnInit {
   messageInformation?: MessageInformation;
@@ -24,13 +30,17 @@ export class ModalWrapperComponent<T> implements OnInit {
   }
 
   ngOnInit(): void {
-    const { title, messageText, btnActionRes, btnCloseRes } = this
-      .messageInformation as MessageInformation;
+    const {
+      title = 'Modal',
+      messageText = undefined,
+      btnActionRes = 'Yes',
+      btnCloseRes = 'No',
+    } = this.messageInformation || {};
 
-    this.title = title || 'Modal';
+    this.title = title;
     this.messageText = messageText;
-    this.btnActionRes = btnActionRes || 'Yes';
-    this.btnCloseRes = btnCloseRes || 'No';
+    this.btnActionRes = btnActionRes;
+    this.btnCloseRes = btnCloseRes;
   }
 
   closeModal(result: boolean, messageInformation?: MessageInformation): void {

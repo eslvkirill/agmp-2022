@@ -15,3 +15,12 @@
   color: $primary-color;
   box-shadow: $box-shadow;
 }
+
+.required-asterisk {
+  &::before {
+    content: "*";
+    color: $error-color;
+    font-size: 15px;
+    margin-right: 2px;
+  }
+}

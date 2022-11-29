@@ -5,13 +5,14 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { CourseInfo, CourseAction } from '../../types';
 import {
-  faClock,
   faCalendarDays,
+  faClock,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { ButtonType } from '../../../shared/enums';
+import { CourseAction, CourseInfo } from '../../types';
 
 @Component({
   selector: 'app-course',

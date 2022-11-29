@@ -1,4 +1,4 @@
-import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { faCalendarDays, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import { first } from 'rxjs';
 import { COURSES } from '../../constants';
 import { CourseInfo } from '../../types/course.interface';
 import { CourseComponent } from './course.component';
+import { DurationPipe } from '../../../shared/pipes/duration/duration.pipe';
 
 describe('CourseComponent', () => {
   let component: CourseComponent;
@@ -16,7 +17,7 @@ describe('CourseComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      declarations: [CourseComponent],
+      declarations: [CourseComponent, DurationPipe],
     });
     fixture = TestBed.createComponent(CourseComponent);
     component = fixture.componentInstance;

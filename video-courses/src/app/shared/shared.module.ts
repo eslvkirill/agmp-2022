@@ -9,6 +9,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SearchComponent } from './components/search/search.component';
 import { BorderColorDirective } from './directives/border-color/border-color.directive';
+import { IfAutentificatedDirective } from './directives/if-autentificated/if-autentificated.directive';
 import { MaterialModule } from './material.module';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
@@ -21,7 +22,7 @@ const COMPONENTS = [
   NoDataComponent,
   ModalWrapperComponent,
 ];
-const DIRECTIVES = [BorderColorDirective];
+const DIRECTIVES = [BorderColorDirective, IfAutentificatedDirective];
 const PIPES = [DurationPipe, OrderByPipe, FilterPipe];
 
 const exportedDeclarations = [...COMPONENTS, ...DIRECTIVES, ...PIPES];
@@ -29,6 +30,6 @@ const exportedDeclarations = [...COMPONENTS, ...DIRECTIVES, ...PIPES];
 @NgModule({
   declarations: exportedDeclarations,
   imports: [CommonModule, FontAwesomeModule, FormsModule, MaterialModule],
-  exports: [exportedDeclarations, MaterialModule],
+  exports: [exportedDeclarations],
 })
 export class SharedModule {}

@@ -1,4 +1,7 @@
 <div class="header">
   <app-logo></app-logo>
-  <app-auth></app-auth>
+  <app-auth 
+    *appIfAutentificated="isAuthenticated"
+    (setAuth)="setAuth.emit()"
+  ></app-auth>
 </div>

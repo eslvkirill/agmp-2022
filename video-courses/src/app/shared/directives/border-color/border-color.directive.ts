@@ -9,7 +9,7 @@ export class BorderColorDirective implements OnInit {
   @Input('appBorderColor') creationDate: Date;
 
   private readonly currentDate = new Date();
-  private freshCourseDate = new Date();
+  private readonly freshCourseDate = new Date();
 
   constructor(private elementRef: ElementRef) {}
 
