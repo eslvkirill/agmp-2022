@@ -34,11 +34,11 @@ export class CoursesListComponent {
     return course.id;
   }
 
-  onEdit(course: any): any {
+  onEdit(course: CourseInfo): void {
     console.log('Edit: ', course.id);
   }
 
-  onDelete(course: any): void {
+  onDelete(course: CourseInfo): void {
     this.openModal()
       .pipe(filter((result) => result?.value?.result))
       .subscribe(() => {

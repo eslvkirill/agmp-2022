@@ -6,7 +6,7 @@ import { CourseInfo } from '../../../courses/types/course.interface';
   name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
-  transform(items: CourseInfo[], searchValue: string): any {
+  transform(items: CourseInfo[], searchValue: string): CourseInfo[] {
     if (!items.length || !searchValue) return items;
 
     return items.filter((item) =>

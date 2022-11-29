@@ -11,7 +11,7 @@ export class CoursesService {
     return COURSES;
   }
 
-  createCourse(): any {}
+  createCourse(): void {}
 
   getItemById(courses: CourseInfo[], courseId: string): CourseInfo | undefined {
     return courses.find((course) => course.id === courseId);
