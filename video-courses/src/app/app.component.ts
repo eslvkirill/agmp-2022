@@ -20,8 +20,7 @@ export class AppComponent implements OnInit {
   isAuthenticated: boolean;
 
   ngOnInit(): void {
-    this.authentication();
-    this.initCourses();
+    this.setAuth();
   }
 
   onSearch(courses: CourseInfo[]): void {
