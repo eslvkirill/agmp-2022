@@ -13,13 +13,13 @@ export class CoursesService {
 
   createCourse(): void {}
 
-  getItemById(courses: CourseInfo[], courseId: string): CourseInfo | undefined {
-    return courses.find((course) => course.id === courseId);
+  getItemById(courseId: string): CourseInfo | undefined {
+    return COURSES.find((course) => course.id === courseId);
   }
 
   updateItem() {}
 
-  removeItem(courses: CourseInfo[], courseId: string): CourseInfo[] {
-    return courses.filter((course) => course.id !== courseId);
+  removeItem(courseId: string): CourseInfo[] {
+    return COURSES.filter((course) => course.id !== courseId);
   }
 }

@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  OnInit,
   Output,
 } from '@angular/core';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
@@ -15,18 +16,31 @@ import { UserData } from '../../types/auth.interface';
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   @Output() setAuth: EventEmitter<void> = new EventEmitter();
-
-  constructor(private authService: AuthService) {}
 
   readonly loginIcon = faUserLarge;
   readonly logoffIcon = faSignOut;
 
-  logout(): void {
-    const { firstName, lastName } = this.authService.getUserInfo() as UserData;
+  user: UserData | null;
+  firstName: string;
+  lastName: string;
 
-    console.log(`Logout: ${firstName} ${lastName}`);
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.user = this.authService.getUserInfo();
+
+    if (!this.user) return;
+
+    const { firstName, lastName } = this.user;
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  logout(): void {
+    console.log(`Logout: ${this.firstName} ${this.lastName}`);
 
     this.authService.logout();
     this.setAuth.emit();

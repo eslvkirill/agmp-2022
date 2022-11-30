@@ -42,7 +42,7 @@ export class CoursesListComponent {
     this.openModal()
       .pipe(filter((result) => result?.value?.result))
       .subscribe(() => {
-        this.courses = this.coursesService.removeItem(this.courses, course.id);
+        this.courses = this.coursesService.removeItem(course.id);
         this.cdr.markForCheck();
       });
   }

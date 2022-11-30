@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   setAuth(): void {
-    this.authentication();
+    this.isAuthenticated = this.authService.isAuthenticated();
     this.initCourses();
   }
 
@@ -36,9 +36,5 @@ export class AppComponent implements OnInit {
     if (this.isAuthenticated) {
       this.courses = this.coursesService.getList();
     }
-  }
-
-  private authentication(): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
   }
 }
