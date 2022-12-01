@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { faUserLarge, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
+
+import { AuthService } from '../../services/auth.service';
+import { UserData } from '../../types/auth.interface';
 
 @Component({
   selector: 'app-auth',
@@ -7,7 +16,33 @@ import { faUserLarge, faSignOut } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
+  @Output() setAuth: EventEmitter<void> = new EventEmitter();
+
   readonly loginIcon = faUserLarge;
   readonly logoffIcon = faSignOut;
+
+  user: UserData | null;
+  firstName: string;
+  lastName: string;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.user = this.authService.getUserInfo();
+
+    if (!this.user) return;
+
+    const { firstName, lastName } = this.user;
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  logout(): void {
+    console.log(`Logout: ${this.firstName} ${this.lastName}`);
+
+    this.authService.logout();
+    this.setAuth.emit();
+  }
 }

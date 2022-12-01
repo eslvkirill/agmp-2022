@@ -5,11 +5,12 @@ import {
   OnInit,
 } from '@angular/core';
 import {
-  faPlus,
   faPencil,
+  faPlus,
   faTrash,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { ButtonType } from '../../enums';
 
 @Component({

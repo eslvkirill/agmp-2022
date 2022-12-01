@@ -1,0 +1,28 @@
+<div class="modal">
+  <div mat-dialog-title>{{ title }}</div>
+  <div 
+    *ngIf="messageText" 
+    mat-dialog-content
+  >
+    {{ messageText }}
+  </div>
+  <div mat-dialog-actions>
+    <button 
+      mat-button 
+      mat-dialog-close
+      mat-stroked-button
+      cdkFocusInitial
+      (click)="closeModal(true, messageInformation)"
+    >
+      {{ btnActionRes }}
+    </button>
+    <button 
+      mat-button 
+      mat-dialog-close
+      mat-stroked-button
+      (click)="onCancel()"
+    >
+      {{ btnCloseRes }}
+    </button>
+  </div>
+</div>

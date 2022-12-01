@@ -1,0 +1,43 @@
+@use "../../../styles/helpers" as *;
+
+:host {
+  @include flex-vertical();
+  min-height: 70vh;
+
+  .login-page {
+    margin: 20px auto;
+    padding: 18px 32px;
+    width: 340px;
+
+    &__title {
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    &__form {
+      .email,
+      .password {
+        &__header {
+          @include flex-vertical();
+          justify-content: space-between;
+
+          &_required {
+            color: $required-form-title-color;
+          }
+        }
+
+        &__input {
+          margin: -10px auto -15px;
+          width: 100%;
+          font-size: 15px;
+        }
+      }
+
+      .actions {
+        @include flex-vertical();
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+    }
+  }
+}

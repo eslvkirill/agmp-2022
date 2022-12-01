@@ -1,0 +1,58 @@
+<mat-card class="login-page">
+  <mat-card-title class="login-page__title">Login</mat-card-title>
+  <mat-card-content class="login-page__content">
+    <form class="login-page__form form">
+      <div class="form__email email">
+        <div class="email__header">
+          <label class="email__header_title" for="email">E-mail:</label>
+          <p class="email__header_required required-asterisk">required</p>
+        </div>
+        <mat-form-field 
+          class="email__input"
+          appearance="outline"
+        >
+          <input 
+            id="email"
+            type="email"
+            matInput
+            placeholder="Enter e-mail"
+          />
+        </mat-form-field>
+      </div>
+      <div class="form__password password">
+        <div class="password__header">
+          <label  class="password__header_title" for="password">Password:</label>
+          <p class="password__header_required required-asterisk">required</p>
+        </div>
+        <mat-form-field 
+          class="password__input"
+          appearance="outline"
+        >
+          <input 
+            id="password"
+            type="password"
+            matInput
+            placeholder="Enter password"
+          />
+        </mat-form-field>
+      </div>
+      <div class="form__actions actions">
+        <a 
+          href="#" 
+          class="actions__password"
+        >
+          Forgot password?
+        </a>
+        <button 
+          type="button"
+          mat-button
+          mat-stroked-button
+          class="actions__login"
+          (click)="login()"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
