@@ -1,6 +1,6 @@
-<form class="add-course form">
-  <div class="form__content content">
-    <div class="content__title title form__field">
+<form class="course-form">
+  <div class="course-form__content content">
+    <div class="content__title title course-form__field">
       <label class="title" for="title">Title:</label>
       <input 
         id="title"
@@ -11,7 +11,7 @@
         [(ngModel)]="titleValue"
       />
     </div>
-    <div class="content__description description form__field">
+    <div class="content__description description course-form__field">
       <label class="description" for="description">Description:</label>
       <textarea 
         id="description"
@@ -24,7 +24,7 @@
         [(ngModel)]="descriptionValue" 
       ></textarea>
     </div>
-    <div class="content__date date form__field">
+    <div class="content__date date course-form__field">
       <label class="date" for="date">Date:</label>
       <input 
         id="date"
@@ -35,7 +35,7 @@
         [(ngModel)]="dateValue"
       />
     </div>
-    <div class="content__duration duration form__field">
+    <div class="content__duration duration course-form__field">
       <label class="duration" for="duration">Duration:</label>
       <div>
         <input 
@@ -50,13 +50,13 @@
         <div>{{ durationValue | duration }}</div>
       </div>
     </div>
-    <div class="content__authors authors form__field">
+    <div class="content__authors authors course-form__field">
       <label class="authors" for="authors">Authors:</label>
       <div>Authors</div>
     </div>
   </div>
-  <div class="form__actions actions">
-    <app-button text="Save"></app-button>
-    <app-button text="Cancel"></app-button>
+  <div class="course-form__actions actions">
+    <app-button text="Save" (click)="onSave()"></app-button>
+    <app-button text="Cancel" (click)="onCancel()"></app-button>
   </div>
 </form>

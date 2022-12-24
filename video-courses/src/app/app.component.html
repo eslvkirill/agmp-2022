@@ -1,12 +1,5 @@
-<app-shell 
-  [isAuthenticated]="isAuthenticated"
-  (setAuth)="setAuth()"
->
-  <main *appIfAutentificated="isAuthenticated">
-    <app-search (search)="onSearch($event)"></app-search>
-    <app-courses  
-      class="courses"
-      [courses]="courses"
-    ></app-courses>
+<app-shell>
+  <main>
+    <router-outlet></router-outlet>
   </main>
 </app-shell>

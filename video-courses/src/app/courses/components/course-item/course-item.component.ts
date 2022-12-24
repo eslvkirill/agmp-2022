@@ -15,12 +15,12 @@ import { ButtonType } from '../../../shared/enums';
 import { CourseAction, CourseInfo } from '../../types';
 
 @Component({
-  selector: 'app-course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss'],
+  selector: 'app-course-item',
+  templateUrl: './course-item.component.html',
+  styleUrls: ['./course-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseComponent {
+export class CourseItemComponent {
   @Input() course: CourseInfo;
 
   @Output() delete: EventEmitter<CourseInfo> = new EventEmitter();

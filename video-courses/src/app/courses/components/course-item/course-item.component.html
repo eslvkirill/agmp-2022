@@ -1,9 +1,9 @@
 <div 
-  class="course" 
+  class="course-item" 
   [ngClass]="{ 'top-rated-course': course.topRated }"
   [appBorderColor]="course.creationDate"
 >
-  <div class="course__content content">
+  <div class="course-item__content content">
     <div class="content__wrapper">
       <div class="content__title title">
         <div class="title__name">{{ course.title | uppercase }}</div>
@@ -35,7 +35,7 @@
     </div>
     <div class="content__description">{{ course.description }}</div>
   </div>
-  <div class="course__actions actions">
+  <div class="course-item__actions actions">
     <div 
       class="actions__item"
       *ngFor="let button of actionButtons; trackBy: trackByFn"

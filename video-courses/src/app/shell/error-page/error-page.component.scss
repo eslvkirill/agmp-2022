@@ -1,0 +1,13 @@
+@use "../../../styles/helpers" as *;
+
+.error-page {
+  @include flexible();
+  margin-top: 195px;
+  font-size: 50px;
+  color: $error-color;
+
+  &__text {
+    @include flex-vertical();
+    flex-direction: column;
+  }
+}

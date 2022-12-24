@@ -9,6 +9,10 @@ const KEY_NAME = 'user';
   providedIn: 'root',
 })
 export class AuthService {
+  get isAuthenticated(): boolean {
+    return !!localStorage.getItem(KEY_NAME);
+  }
+
   login(): void {
     localStorage.setItem(KEY_NAME, JSON.stringify(USER_INFO));
   }
@@ -17,12 +21,8 @@ export class AuthService {
     localStorage.removeItem(KEY_NAME);
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem(KEY_NAME);
-  }
-
   getUserInfo(): UserData | null {
-    return this.isAuthenticated()
+    return this.isAuthenticated
       ? JSON.parse(localStorage.getItem(KEY_NAME) as string)
       : null;
   }

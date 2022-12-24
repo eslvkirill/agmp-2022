@@ -1,3 +1,9 @@
 <div class="breadcrumb">
-  <div class="breadcrumb__item">Courses</div>
+  <div class="breadcrumb__item" (click)="goToCourses()">Courses</div>
+  <div 
+    *ngIf="courseTitle"
+    class="breadcrumb__item_title"
+  >
+    &nbsp;/&nbsp;{{ courseTitle }}
+  </div>
 </div>

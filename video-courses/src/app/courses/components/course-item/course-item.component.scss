@@ -1,6 +1,6 @@
 @use "../../../../styles/helpers" as *;
 
-.course {
+.course-item {
   @include flex-vertical();
   margin: 30px 0;
   padding: 25px 20px;
