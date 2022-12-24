@@ -1,13 +1,9 @@
 <div class="shell">
   <app-header 
     [isAuthenticated]="isAuthenticated"
-    (setAuth)="setAuth.emit()"
+    (setAuth)="setAuth()"
   ></app-header>
-  <app-breadcrumb *appIfAutentificated="isAuthenticated"></app-breadcrumb>
-  <app-login 
-    *appIfAutentificated="!isAuthenticated"
-    (setAuth)="setAuth.emit()"
-  ></app-login>
+  <app-breadcrumb *appIfAuthenticated="isAuthenticated"></app-breadcrumb>
   <ng-content></ng-content>
   <app-footer class="footer"></app-footer>
 </div>

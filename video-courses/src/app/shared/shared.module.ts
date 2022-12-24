@@ -9,7 +9,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SearchComponent } from './components/search/search.component';
 import { BorderColorDirective } from './directives/border-color/border-color.directive';
-import { IfAutentificatedDirective } from './directives/if-autentificated/if-autentificated.directive';
+import { IfAuthenticatedDirective } from './directives/if-authenticated/if-authenticated.directive';
 import { MaterialModule } from './material.module';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
@@ -22,7 +22,7 @@ const COMPONENTS = [
   NoDataComponent,
   ModalWrapperComponent,
 ];
-const DIRECTIVES = [BorderColorDirective, IfAutentificatedDirective];
+const DIRECTIVES = [BorderColorDirective, IfAuthenticatedDirective];
 const PIPES = [DurationPipe, OrderByPipe, FilterPipe];
 
 const exportedDeclarations = [...COMPONENTS, ...DIRECTIVES, ...PIPES];

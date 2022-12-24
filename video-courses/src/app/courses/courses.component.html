@@ -1,11 +1,10 @@
-<app-button
-  class="add-course"
-  text="Add course"
-  [type]="buttonType"
-></app-button>
-
-<!-- TODO: Just for this task -->
-<app-add-course></app-add-course>
-<!-- TODO: Just for this task -->
-
-<app-courses-list [courses]="courses"></app-courses-list>
+<app-search (search)="onSearch($event)"></app-search>
+<div class="courses">
+  <app-button
+    class="courses__add-btn"
+    text="Add course"
+    [type]="buttonType"
+    (click)="addCourse()"
+  ></app-button>
+  <app-courses-list [courses]="courses"></app-courses-list>
+</div>

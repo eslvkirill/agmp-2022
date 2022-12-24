@@ -1,8 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
-import { CoursesService } from './courses/services/courses.service';
-import { CourseInfo } from './courses/types/course.interface';
-import { AuthService } from './shell/header/services/auth.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,31 +6,4 @@ import { AuthService } from './shell/header/services/auth.service';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
-  constructor(
-    private authService: AuthService,
-    private coursesService: CoursesService
-  ) {}
-
-  courses: CourseInfo[];
-  isAuthenticated: boolean;
-
-  ngOnInit(): void {
-    this.setAuth();
-  }
-
-  onSearch(courses: CourseInfo[]): void {
-    this.courses = courses;
-  }
-
-  setAuth(): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
-    this.initCourses();
-  }
-
-  private initCourses(): void {
-    if (this.isAuthenticated) {
-      this.courses = this.coursesService.getList();
-    }
-  }
-}
+export class AppComponent {}

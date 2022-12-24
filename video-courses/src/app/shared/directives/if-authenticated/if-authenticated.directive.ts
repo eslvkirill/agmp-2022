@@ -1,15 +1,15 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appIfAutentificated]',
+  selector: '[appIfAuthenticated]',
 })
-export class IfAutentificatedDirective {
+export class IfAuthenticatedDirective {
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef
   ) {}
 
-  @Input('appIfAutentificated') set isAuthenticated(isAuthenticated: boolean) {
+  @Input('appIfAuthenticated') set isAuthenticated(isAuthenticated: boolean) {
     if (isAuthenticated) {
       this.viewContainer.createEmbeddedView(this.templateRef);
       return;
