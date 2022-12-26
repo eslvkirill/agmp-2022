@@ -1,0 +1,12 @@
+.form {
+  &__field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
