@@ -17,18 +17,17 @@ import { CoursesSearchData } from '../../../courses/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
-  @Input() totalCount: number;
+  @Input() searchValue: string;
+  @Input() coursesCount: number;
   @Output() search: EventEmitter<CoursesSearchData> = new EventEmitter();
 
   readonly searchIcon = faSearch;
-
-  searchValue: string;
 
   constructor(private coursesService: CoursesService) {}
 
   onSearch(): void {
     this.coursesService
-      .getCourses(this.totalCount, this.searchValue)
+      .getCourses(this.coursesCount, this.searchValue)
       .subscribe((courses) =>
         this.search.emit({ courses, searchValue: this.searchValue })
       );

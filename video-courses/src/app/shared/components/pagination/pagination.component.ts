@@ -17,11 +17,10 @@ import { PAGINATION } from '../../constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {
+  @Input() coursesCount: number;
   @Input() searchValue: string;
   @Output() paginateCourses: EventEmitter<CoursesPaginateInfo> =
     new EventEmitter();
-
-  private coursesCount = PAGINATION.SIZE;
 
   showButton = true;
 
