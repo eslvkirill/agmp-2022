@@ -52,12 +52,22 @@ export class BreadcrumbComponent implements OnInit {
   private setCourseTitle(params: Params): void {
     const { id } = params;
 
-    this.courseTitle =
-      id === NEW_COURSE_ID
-        ? NEW_COURSE_TITLE
-        : this.coursesService.getItemById(id)?.title;
+    id === NEW_COURSE_ID
+      ? this.getNewCourseTitle()
+      : this.getExistenceCourseTitle(id);
+  }
 
+  private getNewCourseTitle(): void {
+    this.courseTitle = NEW_COURSE_TITLE;
     this.cdr.markForCheck();
+  }
+
+  private getExistenceCourseTitle(id: number): void {
+    this.coursesService.getCourseById(id).subscribe((courses) => {
+      const [course] = courses;
+      this.courseTitle = course.name;
+      this.cdr.markForCheck();
+    });
   }
 
   private resetCourseTitle(): void {

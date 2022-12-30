@@ -2,11 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { COURSES } from '../../../courses/constants/courses.constants';
 import { CourseInfo } from '../../../courses/types/course.interface';
 import { FilterPipe } from '../../pipes/filter/filter.pipe';
 
@@ -18,6 +18,7 @@ import { FilterPipe } from '../../pipes/filter/filter.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
+  @Input() courses: CourseInfo[];
   @Output() search: EventEmitter<CourseInfo[]> = new EventEmitter();
 
   readonly searchIcon = faSearch;
@@ -28,7 +29,7 @@ export class SearchComponent {
 
   onSearch(): void {
     const filteredCourses = this.filterPipe.transform(
-      COURSES,
+      this.courses,
       this.searchValue
     );
 

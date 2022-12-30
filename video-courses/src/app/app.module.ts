@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesModule } from './courses/courses.module';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { interceptors } from './shared/interceptors';
 import { SharedModule } from './shared/shared.module';
 import { ShellModule } from './shell/shell.module';
 
@@ -19,7 +20,7 @@ import { ShellModule } from './shell/shell.module';
     SharedModule,
     CoursesModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, interceptors],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

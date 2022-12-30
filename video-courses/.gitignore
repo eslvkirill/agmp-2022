@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+/angularmentoringserver/node_modules
 
 # Node
 /node_modules

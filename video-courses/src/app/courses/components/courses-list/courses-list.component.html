@@ -1,5 +1,5 @@
 <app-no-data 
-  *ngIf="!courses.length"
+  *ngIf="!courses?.length"
   [message]="noDataMessage"
 ></app-no-data>
 <div *ngFor="let course of courses | orderBy: orderDirection; trackBy: trackByFn">
@@ -10,4 +10,4 @@
     (delete)="onDelete($event)"
   ></app-course-item>
 </div>
-<app-pagination *ngIf="courses.length"></app-pagination>
+<app-pagination *ngIf="courses?.length"></app-pagination>

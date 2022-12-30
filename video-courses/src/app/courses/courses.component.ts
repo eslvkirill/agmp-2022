@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ButtonType } from '../shared/enums/button.enum';
@@ -16,10 +21,14 @@ export class CoursesComponent implements OnInit {
 
   courses: CourseInfo[];
 
-  constructor(private router: Router, private coursesService: CoursesService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private coursesService: CoursesService
+  ) {}
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getList();
+    this.initCourses();
   }
 
   onSearch(courses: CourseInfo[]): void {
@@ -28,5 +37,12 @@ export class CoursesComponent implements OnInit {
 
   addCourse(): void {
     this.router.navigate(['courses', 'new']);
+  }
+
+  private initCourses(): void {
+    this.coursesService.getCourses().subscribe((courses) => {
+      this.courses = courses;
+      this.cdr.markForCheck();
+    });
   }
 }

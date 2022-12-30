@@ -10,12 +10,21 @@ import { AuthService } from '../header/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
+  emailValue: string;
+  passwordValue: string;
+
   constructor(private router: Router, private authService: AuthService) {}
 
   login(): void {
-    this.authService.login();
-    this.router.navigate(['courses']);
+    if (!this.emailValue || !this.passwordValue) return;
 
-    console.log('logged in successfully');
+    const data = {
+      login: this.emailValue,
+      password: this.passwordValue,
+    };
+
+    this.authService
+      .login(data)
+      .subscribe(() => this.router.navigate(['courses']));
   }
 }

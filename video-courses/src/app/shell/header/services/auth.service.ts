@@ -1,29 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { BACKEND_URL, ENDPOINT } from 'src/app/shared/constants';
 
-import { USER_INFO } from '../constants/user-info.constants';
-import { UserData } from '../types/auth.interface';
+import { AuthToken, LoginInfo, UserInfo } from '../types';
 
-const KEY_NAME = 'user';
+const TOKEN_KEY = 'token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  get isAuthenticated(): boolean {
-    return !!localStorage.getItem(KEY_NAME);
+  private readonly authApiPrefix = `${BACKEND_URL}/${ENDPOINT.AUTH}`;
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+  get getAuthToken(): string | null {
+    return localStorage.getItem(TOKEN_KEY);
   }
 
-  login(): void {
-    localStorage.setItem(KEY_NAME, JSON.stringify(USER_INFO));
+  get isAuthenticated(): boolean {
+    return !!this.getAuthToken;
+  }
+
+  login(data: LoginInfo): Observable<AuthToken> {
+    return this.http
+      .post<AuthToken>(`${this.authApiPrefix}/login`, data)
+      .pipe(tap((response) => localStorage.setItem(TOKEN_KEY, response.token)));
+  }
+
+  getUserInfo(token: string | null): Observable<UserInfo> {
+    return this.http.post<UserInfo>(`${this.authApiPrefix}/userinfo`, {
+      token,
+    });
   }
 
   logout(): void {
-    localStorage.removeItem(KEY_NAME);
+    localStorage.removeItem(TOKEN_KEY);
   }
 
-  getUserInfo(): UserData | null {
-    return this.isAuthenticated
-      ? JSON.parse(localStorage.getItem(KEY_NAME) as string)
-      : null;
+  redirectToLogin(): void {
+    this.router.navigate(['login']);
   }
 }

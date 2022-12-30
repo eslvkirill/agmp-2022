@@ -32,7 +32,7 @@ export class CoursesListComponent {
     private router: Router
   ) {}
 
-  trackByFn(index: number, course: CourseInfo): string {
+  trackByFn(index: number, course: CourseInfo): number {
     return course.id;
   }
 
@@ -40,11 +40,15 @@ export class CoursesListComponent {
     this.router.navigate(['courses', course.id]);
   }
 
+  // TODO: fix remove
   onDelete(course: CourseInfo): void {
     this.openModal()
       .pipe(filter((result) => result?.value?.result))
       .subscribe(() => {
-        this.courses = this.coursesService.removeItem(course.id);
+        this.coursesService
+          .removeCourse(course.id)
+          .subscribe((course) => console.log(course));
+        // this.courses
         this.cdr.markForCheck();
       });
   }

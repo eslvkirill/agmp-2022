@@ -1,35 +1,35 @@
 <div 
   class="course-item" 
-  [ngClass]="{ 'top-rated-course': course.topRated }"
-  [appBorderColor]="course.creationDate"
+  [ngClass]="{ 'top-rated-course': course.isTopRated }"
+  [appBorderColor]="course.date"
 >
   <div class="course-item__content content">
     <div class="content__wrapper">
       <div class="content__title title">
-        <div class="title__name">{{ course.title | uppercase }}</div>
+        <div class="title__name">{{ course.name | uppercase }}</div>
         <fa-icon
-          *ngIf="course.topRated"
+          *ngIf="course.isTopRated"
           class="title__icon"
           [icon]="starIcon"
          ></fa-icon>
       </div>
       <div class="content__datetime datetime">
         <div 
-          *ngIf="course.duration"
+          *ngIf="course.length"
           class="datetime__time time"
         >
           <fa-icon
             [icon]="timeIcon"
             class="time__icon"
           ></fa-icon>
-          <div class="time__value">{{ course.duration | duration }}</div>
+          <div class="time__value">{{ course.length | duration }}</div>
         </div>
         <div class="datetime__date date">
           <fa-icon
             [icon]="dateIcon"
             class="date__icon"
           ></fa-icon>
-          <div class="date_value">{{ course.creationDate | date: datePipe }}</div>
+          <div class="date_value">{{ course.date | date: datePipe }}</div>
         </div>
       </div>
     </div>
