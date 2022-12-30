@@ -9,10 +9,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderModule } from './header/header.module';
 import { LoginComponent } from './login/login.component';
 import { ShellComponent } from './shell.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
     ShellComponent,
+    SpinnerComponent,
     BreadcrumbComponent,
     FooterComponent,
     LoginComponent,
@@ -27,6 +29,7 @@ import { ShellComponent } from './shell.component';
   exports: [
     ShellComponent,
     BreadcrumbComponent,
+    SpinnerComponent,
     FooterComponent,
     LoginComponent,
   ],

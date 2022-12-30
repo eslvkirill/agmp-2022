@@ -7,9 +7,9 @@ import {
   Output,
 } from '@angular/core';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
+import { map } from 'rxjs';
 
-import { AuthService } from '../../services/auth.service';
-import { UserInfo } from '../../types/auth.interface';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -23,9 +23,7 @@ export class AuthComponent implements OnInit {
   readonly loginIcon = faUserLarge;
   readonly logoffIcon = faSignOut;
 
-  user: UserInfo;
-  firstName: string;
-  lastName: string;
+  userName: string;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -33,7 +31,7 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initUserInfo();
+    this.initUserName();
   }
 
   logout(): void {
@@ -42,22 +40,20 @@ export class AuthComponent implements OnInit {
     this.authService.redirectToLogin();
   }
 
-  private initUserInfo(): void {
+  private initUserName(): void {
     const token = this.authService.getAuthToken;
 
-    this.authService.getUserInfo(token).subscribe((userInfo) => {
-      this.user = userInfo;
-      this.getUserData();
-      this.cdr.markForCheck();
-    });
-  }
-
-  private getUserData(): void {
-    if (!this.user) return;
-
-    const { first, last } = this.user.name;
-
-    this.firstName = first;
-    this.lastName = last;
+    this.authService
+      .getUserInfo(token)
+      .pipe(
+        map((userInfo) => {
+          const { first, last } = userInfo.name;
+          return `${first} ${last}`;
+        })
+      )
+      .subscribe((userName) => {
+        this.userName = userName;
+        this.cdr.markForCheck();
+      });
   }
 }

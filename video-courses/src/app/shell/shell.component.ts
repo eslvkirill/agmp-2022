@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { AuthService } from './header/services/auth.service';
+import { AuthService } from './header/services/auth/auth.service';
 
 @Component({
   selector: 'app-shell',

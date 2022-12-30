@@ -16,6 +16,11 @@ const PAGINATION = {
 
 const SORT_DATE = 'date';
 
+const SEARCH_OPTIONS = {
+  DEBOUNCE: 1000,
+  MIN_LENGTH: 3,
+};
+
 export {
   START_PAGE_URL,
   BACKEND_URL,
@@ -23,4 +28,5 @@ export {
   NEW_COURSE_ID,
   PAGINATION,
   SORT_DATE,
+  SEARCH_OPTIONS,
 };
