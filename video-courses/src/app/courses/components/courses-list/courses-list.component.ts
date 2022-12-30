@@ -5,7 +5,7 @@ import {
   Input,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, switchMap } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
 
 import { OrderDirection } from '../../../shared/enums/orderDirection.enum';
@@ -40,15 +40,15 @@ export class CoursesListComponent {
     this.router.navigate(['courses', course.id]);
   }
 
-  // TODO: fix remove
   onDelete(course: CourseInfo): void {
     this.openModal()
-      .pipe(filter((result) => result?.value?.result))
-      .subscribe(() => {
-        this.coursesService
-          .removeCourse(course.id)
-          .subscribe((course) => console.log(course));
-        // this.courses
+      .pipe(
+        filter((result) => result?.value?.result),
+        switchMap(() => this.coursesService.removeCourse(course.id)),
+        switchMap(() => this.coursesService.getCourses())
+      )
+      .subscribe((courses) => {
+        this.courses = courses;
         this.cdr.markForCheck();
       });
   }

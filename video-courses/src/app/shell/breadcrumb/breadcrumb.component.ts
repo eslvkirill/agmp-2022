@@ -5,10 +5,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivationStart, Params, Router } from '@angular/router';
+import { NEW_COURSE_ID } from 'src/app/shared/constants';
 
 import { CoursesService } from '../../courses/services/courses.service';
 
-const NEW_COURSE_ID = 'new';
 const NEW_COURSE_TITLE = 'New Course';
 
 @Component({
