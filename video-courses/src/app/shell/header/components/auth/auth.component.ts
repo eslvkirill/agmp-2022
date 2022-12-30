@@ -37,8 +37,6 @@ export class AuthComponent implements OnInit {
   }
 
   logout(): void {
-    console.log(`Logout: ${this.firstName} ${this.lastName}`);
-
     this.authService.logout();
     this.setAuth.emit();
     this.authService.redirectToLogin();

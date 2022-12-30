@@ -1,7 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BACKEND_URL, ENDPOINT, PAGINATION } from 'src/app/shared/constants';
+import {
+  BACKEND_URL,
+  ENDPOINT,
+  PAGINATION,
+  SORT_DATE,
+} from 'src/app/shared/constants';
 
 import { AuthorsInfo, CourseInfo } from '../types/course.interface';
 
@@ -16,10 +21,17 @@ export class CoursesService {
   constructor(private http: HttpClient) {}
 
   getCourses(
-    count: number = PAGINATION.SIZE,
-    start: number = PAGINATION.START_NUMBER
+    count = PAGINATION.SIZE,
+    searchText = '',
+    start = PAGINATION.START_NUMBER,
+    sortOrder = SORT_DATE
   ): Observable<CourseInfo[]> {
-    const params = new HttpParams().set('count', count).set('start', start);
+    const params = new HttpParams()
+      .set('count', count)
+      .set('start', start)
+      .set('sort', sortOrder)
+      .set('textFragment', searchText);
+
     return this.http.get<CourseInfo[]>(this.coursesApiPrefix, { params });
   }
 

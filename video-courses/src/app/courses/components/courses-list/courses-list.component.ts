@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { filter, Observable, switchMap } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
 
-import { OrderDirection } from '../../../shared/enums/orderDirection.enum';
 import { ModalService } from '../../../shared/services/modal/modal.service';
 import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types';
@@ -23,7 +22,6 @@ export class CoursesListComponent {
   @Input() courses: CourseInfo[];
 
   readonly noDataMessage = 'Feel free to add new course';
-  readonly orderDirection = OrderDirection.DESC;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -51,10 +49,6 @@ export class CoursesListComponent {
         this.courses = courses;
         this.cdr.markForCheck();
       });
-  }
-
-  paginateCourses(courses: CourseInfo[]): void {
-    this.courses = courses;
   }
 
   private openModal(): Observable<ModalResponse> {

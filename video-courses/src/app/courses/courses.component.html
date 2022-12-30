@@ -1,4 +1,4 @@
-<app-search [courses]="courses" (search)="onSearch($event)"></app-search>
+<app-search [totalCount]="coursesCount" (search)="onSearch($event)"></app-search>
 <div class="courses">
   <app-button
     class="courses__add-btn"
@@ -7,4 +7,9 @@
     (click)="addCourse()"
   ></app-button>
   <app-courses-list [courses]="courses"></app-courses-list>
+  <app-pagination 
+    *ngIf="courses?.length"
+    [searchValue]="searchValue"
+    (paginateCourses)="paginateCourses($event)"
+  ></app-pagination>
 </div>

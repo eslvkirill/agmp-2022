@@ -5,10 +5,11 @@ import {
   OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { PAGINATION } from 'src/app/shared/constants';
 
 import { ButtonType } from '../shared/enums/button.enum';
 import { CoursesService } from './services/courses.service';
-import { CourseInfo } from './types/course.interface';
+import { CourseInfo, CoursesPaginateInfo, CoursesSearchData } from './types';
 
 @Component({
   selector: 'app-courses',
@@ -18,6 +19,9 @@ import { CourseInfo } from './types/course.interface';
 })
 export class CoursesComponent implements OnInit {
   readonly buttonType = ButtonType.Add;
+
+  coursesCount = PAGINATION.SIZE;
+  searchValue = '';
 
   courses: CourseInfo[];
 
@@ -31,12 +35,18 @@ export class CoursesComponent implements OnInit {
     this.initCourses();
   }
 
-  onSearch(courses: CourseInfo[]): void {
-    this.courses = courses;
+  onSearch(searchData: CoursesSearchData): void {
+    this.courses = searchData.courses;
+    this.searchValue = searchData.searchValue;
   }
 
   addCourse(): void {
     this.router.navigate(['courses', 'new']);
+  }
+
+  paginateCourses(paginateInfo: CoursesPaginateInfo): void {
+    this.courses = paginateInfo.courses;
+    this.coursesCount = paginateInfo.totalCount;
   }
 
   private initCourses(): void {

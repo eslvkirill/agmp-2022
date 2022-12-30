@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent } from './components/button/button.component';
 import { ModalWrapperComponent } from './components/modals/modal-wrapper/modal-wrapper.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import { SearchComponent } from './components/search/search.component';
 import { BorderColorDirective } from './directives/border-color/border-color.directive';
 import { IfAuthenticatedDirective } from './directives/if-authenticated/if-authenticated.directive';
@@ -17,6 +18,7 @@ import { OrderByPipe } from './pipes/order-by/order-by.pipe';
 const COMPONENTS = [
   SearchComponent,
   ButtonComponent,
+  PaginationComponent,
   NoDataComponent,
   ModalWrapperComponent,
 ];

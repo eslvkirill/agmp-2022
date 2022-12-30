@@ -9,13 +9,11 @@ import { ShellModule } from '../shell/shell.module';
 import { CourseFormComponent } from './components/course-form/course-form.component';
 import { CourseItemComponent } from './components/course-item/course-item.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses.component';
 
 @NgModule({
   declarations: [
-    PaginationComponent,
     CoursesComponent,
     CourseItemComponent,
     CoursesListComponent,
