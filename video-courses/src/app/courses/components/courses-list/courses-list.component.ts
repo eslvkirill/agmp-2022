@@ -53,6 +53,10 @@ export class CoursesListComponent {
       });
   }
 
+  paginateCourses(courses: CourseInfo[]): void {
+    this.courses = courses;
+  }
+
   private openModal(): Observable<ModalResponse> {
     return this.modalService
       .openDialog({

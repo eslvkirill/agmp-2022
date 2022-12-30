@@ -10,4 +10,7 @@
     (delete)="onDelete($event)"
   ></app-course-item>
 </div>
-<app-pagination *ngIf="courses?.length"></app-pagination>
+<app-pagination 
+  *ngIf="courses?.length"
+  (paginateCourses)="paginateCourses($event)"
+></app-pagination>

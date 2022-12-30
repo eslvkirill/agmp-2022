@@ -1,8 +1,8 @@
-<div class="pagination empty-center-block">
+<div *ngIf="showButton" class="pagination empty-center-block">
   <div 
     class="pagination__label"
     (click)="paginate()"
   >
-    load more
+    Load more
   </div>
 </div>
