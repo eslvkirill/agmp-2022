@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    this.setAuthToken(request);
+    request = this.setAuthToken(request);
 
     return next.handle(request).pipe(
       catchError((error: any) => {
@@ -30,13 +30,13 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 
-  private setAuthToken(request: HttpRequest<unknown>): void {
+  private setAuthToken(request: HttpRequest<unknown>): HttpRequest<unknown> {
     const token = this.authService.getAuthToken;
 
-    if (token) {
-      request = request.clone({
-        setHeaders: { Authorization: `Token ${token}` },
-      });
-    }
+    if (!token) return request;
+
+    return request.clone({
+      setHeaders: { Authorization: `Token ${token}` },
+    });
   }
 }
