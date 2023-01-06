@@ -1,10 +1,12 @@
-<app-search (search)="onSearch($event)"></app-search>
-<div class="courses">
-  <app-button
-    class="courses__add-btn"
-    text="Add course"
-    [type]="buttonType"
-    (click)="addCourse()"
-  ></app-button>
-  <app-courses-list [courses]="courses"></app-courses-list>
-</div>
+<app-shell>
+  <app-search (search)="onSearch($event)"></app-search>
+  <div class="courses">
+    <app-button
+      class="courses__add-btn"
+      text="Add course"
+      [type]="buttonType"
+      (click)="addCourse()"
+    ></app-button>
+    <app-courses-list [courses]="courses"></app-courses-list>
+  </div>
+</app-shell>
