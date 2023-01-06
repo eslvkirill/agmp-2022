@@ -1,19 +1,21 @@
-<app-search 
-  [coursesCount]="coursesCount" 
-  (search)="onSearch($event)"
-></app-search>
-<div class="courses">
-  <app-button
-    class="courses__add-btn"
-    text="Add course"
-    [type]="buttonType"
-    (click)="addCourse()"
-  ></app-button>
-  <app-courses-list [courses]="courses"></app-courses-list>
-  <app-pagination 
-    *ngIf="courses?.length"
-    [coursesCount]="coursesCount"
-    [searchValue]="searchValue"
-    (paginateCourses)="paginateCourses($event)"
-  ></app-pagination>
-</div>
+<app-shell>
+  <app-search 
+    [coursesCount]="coursesCount" 
+    (search)="onSearch($event)"
+  ></app-search>
+  <div class="courses">
+    <app-button
+      class="courses__add-btn"
+      text="Add course"
+      [type]="buttonType"
+      (click)="addCourse()"
+    ></app-button>
+    <app-courses-list [courses]="courses"></app-courses-list>
+    <app-pagination 
+      *ngIf="courses?.length"
+      [coursesCount]="coursesCount"
+      [searchValue]="searchValue"
+      (paginateCourses)="paginateCourses($event)"
+    ></app-pagination>
+  </div>
+</app-shell>
