@@ -1,62 +1,64 @@
-<form class="course-form">
-  <div class="course-form__content content">
-    <div class="content__title title course-form__field">
-      <label class="title" for="title">Title:</label>
-      <input 
-        id="title"
-        type="text" 
-        class="title__input"
-        placeholder="Title"
-        name="title"
-        [(ngModel)]="titleValue"
-      />
-    </div>
-    <div class="content__description description course-form__field">
-      <label class="description" for="description">Description:</label>
-      <textarea 
-        id="description"
-        type="text" 
-        rows="5"
-        maxlength="500"
-        class="description__input"
-        placeholder="Description"
-        name="description"
-        [(ngModel)]="descriptionValue" 
-      ></textarea>
-    </div>
-    <div class="content__date date course-form__field">
-      <label class="date" for="date">Date:</label>
-      <input 
-        id="date"
-        type="date" 
-        class="date__input"
-        placeholder="Date"
-        name="date"
-        [(ngModel)]="dateValue"
-      />
-    </div>
-    <div class="content__duration duration course-form__field">
-      <label class="duration" for="duration">Duration:</label>
-      <div>
+<app-shell>
+  <form class="course-form">
+    <div class="course-form__content content">
+      <div class="content__title title course-form__field">
+        <label class="title" for="title">Title:</label>
         <input 
-          id="duration"
-          min="0"
-          type="number" 
-          class="duration__input"
-          placeholder="Duration"
-          name="duration"
-          [(ngModel)]="durationValue"
+          id="title"
+          type="text" 
+          class="title__input"
+          placeholder="Title"
+          name="title"
+          [(ngModel)]="titleValue"
         />
-        <div>{{ durationValue | duration }}</div>
+      </div>
+      <div class="content__description description course-form__field">
+        <label class="description" for="description">Description:</label>
+        <textarea 
+          id="description"
+          type="text" 
+          rows="5"
+          maxlength="500"
+          class="description__input"
+          placeholder="Description"
+          name="description"
+          [(ngModel)]="descriptionValue" 
+        ></textarea>
+      </div>
+      <div class="content__date date course-form__field">
+        <label class="date" for="date">Date:</label>
+        <input 
+          id="date"
+          type="date" 
+          class="date__input"
+          placeholder="Date"
+          name="date"
+          [(ngModel)]="dateValue"
+        />
+      </div>
+      <div class="content__duration duration course-form__field">
+        <label class="duration" for="duration">Duration:</label>
+        <div>
+          <input 
+            id="duration"
+            min="0"
+            type="number" 
+            class="duration__input"
+            placeholder="Duration"
+            name="duration"
+            [(ngModel)]="durationValue"
+          />
+          <div>{{ durationValue | duration }}</div>
+        </div>
+      </div>
+      <div class="content__authors authors course-form__field">
+        <label class="authors" for="authors">Authors:</label>
+        <div>Authors</div>
       </div>
     </div>
-    <div class="content__authors authors course-form__field">
-      <label class="authors" for="authors">Authors:</label>
-      <div>Authors</div>
+    <div class="course-form__actions actions">
+      <app-button text="Save" (click)="onSave()"></app-button>
+      <app-button text="Cancel" (click)="onCancel()"></app-button>
     </div>
-  </div>
-  <div class="course-form__actions actions">
-    <app-button text="Save" (click)="onSave()"></app-button>
-    <app-button text="Cancel" (click)="onCancel()"></app-button>
-  </div>
-</form>
+  </form>
+</app-shell>
