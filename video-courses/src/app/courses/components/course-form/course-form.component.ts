@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types/course.interface';
 
+const NEW_COURSE_TITLE = 'New Course';
+
 @Component({
   selector: 'app-course-form',
   templateUrl: './course-form.component.html',
@@ -15,6 +17,7 @@ export class CourseFormComponent implements OnInit {
   titleValue: string;
   descriptionValue: string;
   dateValue: Date;
+  courseTitleBatchName: string;
   course?: CourseInfo;
   courseId?: string;
 
@@ -30,6 +33,7 @@ export class CourseFormComponent implements OnInit {
     this.course = this.coursesService.getItemById(id);
 
     this.initCourseData();
+    this.initCourseTitleBatchName();
   }
 
   onSave(): void {
@@ -37,7 +41,7 @@ export class CourseFormComponent implements OnInit {
       ? this.coursesService.createCourse()
       : this.coursesService.updateItem();
 
-    this.router.navigate(['courses']);
+    this.onCancel();
   }
 
   onCancel(): void {
@@ -53,5 +57,9 @@ export class CourseFormComponent implements OnInit {
     this.titleValue = title;
     this.descriptionValue = description;
     this.durationValue = duration;
+  }
+
+  private initCourseTitleBatchName(): void {
+    this.courseTitleBatchName = this.titleValue || NEW_COURSE_TITLE;
   }
 }
