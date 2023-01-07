@@ -40,7 +40,7 @@ export class AuthService {
     localStorage.removeItem(TOKEN_KEY);
   }
 
-  redirectToLogin(): void {
-    this.router.navigate(['login']);
+  redirectToLoginPage(): Promise<boolean> {
+    return this.router.navigate(['login']);
   }
 }

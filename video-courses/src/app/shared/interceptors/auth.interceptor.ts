@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: any) => {
         if (error.status === HttpErrorStatus.Unauthorized) {
-          this.authService.redirectToLogin();
+          this.authService.redirectToLoginPage();
         }
         return throwError(error);
       })

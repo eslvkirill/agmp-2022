@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NEW_COURSE_ID } from 'src/app/shared/constants';
+import { NEW_COURSE } from 'src/app/shared/constants';
 import { getRandomNumber } from 'src/app/shared/utils/random.utils';
 
 import { CoursesService } from '../../services/courses.service';
@@ -23,6 +23,7 @@ export class CourseFormComponent implements OnInit {
   descriptionValue: string;
   dateValue: Date;
   isTopRated: boolean;
+  courseTitleBatchName: string;
   course?: CourseInfo;
   courseId: string;
 
@@ -66,11 +67,11 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSave(): void {
-    this.courseId === NEW_COURSE_ID ? this.createCourse() : this.updateCourse();
+    this.courseId === NEW_COURSE.ID ? this.createCourse() : this.updateCourse();
   }
 
   onCancel(): void {
-    this.redirectToCourses();
+    this.coursesService.redirectToCoursesPage();
   }
 
   private initCourse(): void {
@@ -82,6 +83,7 @@ export class CourseFormComponent implements OnInit {
 
       this.course = course;
       this.initCourseData();
+      this.initCourseTitleBatchName();
       this.cdr.markForCheck();
     });
   }
@@ -98,6 +100,10 @@ export class CourseFormComponent implements OnInit {
     this.isTopRated = isTopRated;
   }
 
+  private initCourseTitleBatchName(): void {
+    this.courseTitleBatchName = this.titleValue || NEW_COURSE.TITLE;
+  }
+
   private initAuthors(): void {
     this.coursesService.getAuthors().subscribe();
   }
@@ -106,7 +112,7 @@ export class CourseFormComponent implements OnInit {
     if (this.isFormFieldsEmpty) return;
 
     this.coursesService.createCourse(this.getCourseDataOnChange).subscribe();
-    this.redirectToCourses();
+    this.onCancel();
   }
 
   private updateCourse(): void {
@@ -119,10 +125,6 @@ export class CourseFormComponent implements OnInit {
     };
 
     this.coursesService.updateCourse(course).subscribe();
-    this.redirectToCourses();
-  }
-
-  private redirectToCourses(): void {
-    this.router.navigate(['courses']);
+    this.onCancel();
   }
 }

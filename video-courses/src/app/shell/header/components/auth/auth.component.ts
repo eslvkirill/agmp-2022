@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.setAuth.emit();
-    this.authService.redirectToLogin();
+    this.authService.redirectToLoginPage();
   }
 
   private initUserName(): void {

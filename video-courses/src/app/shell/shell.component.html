@@ -3,7 +3,10 @@
     [isAuthenticated]="isAuthenticated"
     (setAuth)="setAuth()"
   ></app-header>
-  <app-breadcrumb *appIfAuthenticated="isAuthenticated"></app-breadcrumb>
+  <app-breadcrumb 
+    *appIfAuthenticated="isAuthenticated" 
+    [batchName]="batchName"
+  ></app-breadcrumb>
   <ng-content></ng-content>
   <app-footer class="footer"></app-footer>
 </div>

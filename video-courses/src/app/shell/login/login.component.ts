@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 
+import { CoursesService } from '../../courses/services/courses.service';
 import { AuthService } from '../header/services/auth/auth.service';
 
 @Component({
@@ -13,7 +13,10 @@ export class LoginComponent {
   emailValue: string;
   passwordValue: string;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private coursesService: CoursesService
+  ) {}
 
   login(): void {
     if (!this.emailValue || !this.passwordValue) return;
@@ -25,6 +28,6 @@ export class LoginComponent {
 
     this.authService
       .login(data)
-      .subscribe(() => this.router.navigate(['courses']));
+      .subscribe(() => this.coursesService.redirectToCoursesPage());
   }
 }
