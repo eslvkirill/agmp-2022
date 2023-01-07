@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 import { AuthService } from './header/services/auth.service';
 
@@ -9,6 +14,8 @@ import { AuthService } from './header/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShellComponent implements OnInit {
+  @Input() batchName?: string;
+
   isAuthenticated: boolean;
 
   constructor(private authService: AuthService) {}

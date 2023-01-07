@@ -7,7 +7,10 @@ const ENDPOINT = {
   AUTHORS: 'authors',
 };
 
-const NEW_COURSE_ID = 'new';
+const NEW_COURSE = {
+  ID: 'new',
+  TITLE: 'New Course',
+};
 
 const PAGINATION = {
   SIZE: 5,
@@ -20,7 +23,7 @@ export {
   START_PAGE_URL,
   BACKEND_URL,
   ENDPOINT,
-  NEW_COURSE_ID,
+  NEW_COURSE,
   PAGINATION,
   SORT_DATE,
 };
