@@ -1,14 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { PAGINATION } from 'src/app/shared/constants';
 
 import { ButtonType } from '../shared/enums/button.enum';
-import { CoursesService } from './services/courses.service';
+import { COURSES_ACTIONS, selectAllCourses } from '../store/courses';
 import { CourseInfo, CoursesPaginateInfo, CoursesSearchData } from './types';
 
 @Component({
@@ -20,16 +16,14 @@ import { CourseInfo, CoursesPaginateInfo, CoursesSearchData } from './types';
 export class CoursesComponent implements OnInit {
   readonly buttonType = ButtonType.Add;
 
+  private readonly courses$ = this.store.select(selectAllCourses);
+
   coursesCount = PAGINATION.SIZE;
   searchValue = '';
 
   courses: CourseInfo[];
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private router: Router,
-    private coursesService: CoursesService
-  ) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.initCourses();
@@ -50,9 +44,7 @@ export class CoursesComponent implements OnInit {
   }
 
   private initCourses(): void {
-    this.coursesService.getCourses().subscribe((courses) => {
-      this.courses = courses;
-      this.cdr.markForCheck();
-    });
+    this.store.dispatch(COURSES_ACTIONS.coursesInit());
+    this.courses$.subscribe((courses) => (this.courses = courses));
   }
 }

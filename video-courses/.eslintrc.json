@@ -10,7 +10,7 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json"
+          "**/tsconfig.json"
         ],
         "createDefaultProgram": true
       },
@@ -36,31 +36,40 @@
           }
         ],
         "quotes": [
-					2,
-					"single",
-					{
-						"avoidEscape": true,
-						"allowTemplateLiterals": true
-					}
-				],
-				"semi": ["warn", "always"],
-        "no-console": ["warn"],
-        "@typescript-eslint/explicit-function-return-type": ["error"],
-        "@typescript-eslint/no-empty-function": ["warn"],
+          2,
+          "single",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
+        "semi": [
+          "warn",
+          "always"
+        ],
+        "no-console": [
+          "warn"
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error"
+        ],
+        "@typescript-eslint/no-empty-function": [
+          "warn"
+        ],
         "no-multiple-empty-lines": [
-					"warn",
-					{
-						"max": 1,
-						"maxEOF": 0
-					}
-				],
+          "warn",
+          {
+            "max": 1,
+            "maxEOF": 0
+          }
+        ],
         "lines-between-class-members": [
-					"warn",
-					"always",
-					{
-						"exceptAfterSingleLine": true
-					}
-				]
+          "warn",
+          "always",
+          {
+            "exceptAfterSingleLine": true
+          }
+        ]
       }
     },
     {
@@ -71,6 +80,14 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }

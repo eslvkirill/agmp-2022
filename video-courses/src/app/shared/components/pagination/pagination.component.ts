@@ -19,6 +19,7 @@ import { PAGINATION } from '../../constants';
 export class PaginationComponent {
   @Input() coursesCount: number;
   @Input() searchValue: string;
+
   @Output() paginateCourses: EventEmitter<CoursesPaginateInfo> =
     new EventEmitter();
 
