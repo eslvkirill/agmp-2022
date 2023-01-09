@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { NEW_COURSE } from 'src/app/shared/constants';
@@ -28,6 +33,7 @@ export class CourseFormComponent implements OnInit {
 
   constructor(
     private store: Store,
+    private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
     private coursesService: CoursesService
   ) {}
@@ -87,6 +93,7 @@ export class CourseFormComponent implements OnInit {
       this.course = course;
       this.initCourseData();
       this.initCourseTitleBatchName();
+      this.cdr.markForCheck();
     });
   }
 
