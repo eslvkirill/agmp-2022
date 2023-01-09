@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { CoursesService } from '../../courses/services/courses.service';
+import { CoursesService } from 'src/app/features/courses/services/courses.service';
 
 @Component({
   selector: 'app-breadcrumb',

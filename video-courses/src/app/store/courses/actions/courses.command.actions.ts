@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CourseInfo } from 'src/app/courses/types';
+import { CourseInfo } from 'src/app/features/courses/types';
 
 import { COURSES_TYPES } from '../courses.types';
 

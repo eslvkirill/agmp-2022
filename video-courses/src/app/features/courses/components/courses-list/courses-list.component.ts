@@ -5,7 +5,7 @@ import { filter, Observable } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
 import { COURSES_ACTIONS } from 'src/app/store/courses';
 
-import { ModalService } from '../../../shared/services/modal/modal.service';
+import { ModalService } from '../../../../shared/services/modal/modal.service';
 import { CourseInfo } from '../../types';
 
 @Component({

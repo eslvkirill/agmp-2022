@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ErrorPageComponent } from './shell/error-page/error-page.component';
-import { LoginComponent } from './shell/login/login.component';
 
 const routes: Routes = [
   {
@@ -13,14 +12,17 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () =>
+      import('./features/login/login.module').then((mod) => mod.LoginModule),
   },
   {
     path: 'courses',
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     loadChildren: () =>
-      import('./courses/courses.module').then((mod) => mod.CoursesModule),
+      import('./features/courses/courses.module').then(
+        (mod) => mod.CoursesModule
+      ),
   },
   {
     path: '**',

@@ -3,14 +3,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ShellModule } from 'src/app/shell/shell.module';
 
-import { SharedModule } from '../shared/shared.module';
-import { ShellModule } from '../shell/shell.module';
 import { CourseFormComponent } from './components/course-form/course-form.component';
 import { CourseItemComponent } from './components/course-item/course-item.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { CoursesComponent } from './components/courses/courses.component';
 import { CoursesRoutingModule } from './courses-routing.module';
-import { CoursesComponent } from './courses.component';
 
 @NgModule({
   declarations: [

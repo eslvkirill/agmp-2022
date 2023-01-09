@@ -11,7 +11,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { ButtonType } from '../../../shared/enums';
+import { ButtonType } from '../../../../shared/enums';
 import { CourseAction, CourseInfo } from '../../types';
 
 @Component({

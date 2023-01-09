@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,10 +9,8 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesModule } from './courses/courses.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { interceptors } from './shared/interceptors';
-import { SharedModule } from './shared/shared.module';
 import { ShellModule } from './shell/shell.module';
 import { metaReducers, reducers } from './store';
 import { CoursesEffects } from './store/courses';
@@ -21,6 +20,7 @@ import { CoursesEffects } from './store/courses';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([CoursesEffects]),
@@ -29,8 +29,6 @@ import { CoursesEffects } from './store/courses';
       logOnly: environment.production,
     }),
     ShellModule,
-    SharedModule,
-    CoursesModule,
   ],
   providers: [AuthGuard, interceptors],
   bootstrap: [AppComponent],

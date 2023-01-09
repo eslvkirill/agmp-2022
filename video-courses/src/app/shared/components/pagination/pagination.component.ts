@@ -5,9 +5,12 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { CourseInfo, CoursesPaginateInfo } from 'src/app/courses/types';
+import { CoursesService } from 'src/app/features/courses/services/courses.service';
+import {
+  CourseInfo,
+  CoursesPaginateInfo,
+} from 'src/app/features/courses/types';
 
-import { CoursesService } from '../../../courses/services/courses.service';
 import { PAGINATION } from '../../constants';
 
 @Component({

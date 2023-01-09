@@ -2,12 +2,12 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { COURSES } from '../../constants/courses.constants';
+import { COURSES } from '../../../features/courses/constants/courses.constants';
 import { CourseInfo } from '../../types/course.interface';
 import { CoursesListComponent } from './courses-list.component';
-import { ModalService } from '../../../shared/services/modal/modal.service';
+import { ModalService } from '../../../../shared/services/modal/modal.service';
 import { CoursesService } from '../../services/courses.service';
-import { OrderByPipe } from '../../../shared/pipes/order-by/order-by.pipe';
+import { OrderByPipe } from '../../../../shared/pipes/order-by/order-by.pipe';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;

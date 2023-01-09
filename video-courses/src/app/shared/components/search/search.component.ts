@@ -16,9 +16,9 @@ import {
   Subscription,
   switchMap,
 } from 'rxjs';
+import { CoursesService } from 'src/app/features/courses/services/courses.service';
+import { CoursesSearchData } from 'src/app/features/courses/types';
 
-import { CoursesService } from '../../../courses/services/courses.service';
-import { CoursesSearchData } from '../../../courses/types';
 import { SEARCH_OPTIONS } from '../../constants';
 
 @Component({

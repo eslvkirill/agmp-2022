@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { CourseInfo } from 'src/app/features/courses/types';
 
-import { CourseInfo } from '../../../courses/types/course.interface';
 import { OrderDirection } from '../../enums';
 
 @Pipe({

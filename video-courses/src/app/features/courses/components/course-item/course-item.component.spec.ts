@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { faCalendarDays, faClock } from '@fortawesome/free-solid-svg-icons';
 import { first } from 'rxjs';
 
-import { DurationPipe } from '../../../shared/pipes/duration/duration.pipe';
+import { DurationPipe } from '../../../../shared/pipes/duration/duration.pipe';
 import { COURSES } from '../../constants';
 import { CourseInfo } from '../../types/course.interface';
 import { CourseItemComponent } from './course-item.component';

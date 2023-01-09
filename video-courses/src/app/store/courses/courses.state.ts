@@ -1,4 +1,4 @@
-import { AuthorsInfo, CourseInfo } from 'src/app/courses/types';
+import { AuthorsInfo, CourseInfo } from 'src/app/features/courses/types';
 
 interface CoursesState {
   courses: CourseInfo[];

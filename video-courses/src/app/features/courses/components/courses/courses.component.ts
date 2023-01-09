@@ -7,10 +7,14 @@ import {
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { PAGINATION } from 'src/app/shared/constants';
+import { ButtonType } from 'src/app/shared/enums';
+import { COURSES_ACTIONS, selectAllCourses } from 'src/app/store/courses';
 
-import { ButtonType } from '../shared/enums/button.enum';
-import { COURSES_ACTIONS, selectAllCourses } from '../store/courses';
-import { CourseInfo, CoursesPaginateInfo, CoursesSearchData } from './types';
+import {
+  CourseInfo,
+  CoursesPaginateInfo,
+  CoursesSearchData,
+} from '../../types';
 
 @Component({
   selector: 'app-courses',

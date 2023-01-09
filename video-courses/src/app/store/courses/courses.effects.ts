@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs';
-import { CourseInfo } from 'src/app/courses/types';
+import { CoursesService } from 'src/app/features/courses/services/courses.service';
+import { CourseInfo } from 'src/app/features/courses/types';
 
 import { COURSES_ACTIONS } from '.';
-import { CoursesService } from '../../courses/services/courses.service';
 
 @Injectable()
 export class CoursesEffects {
