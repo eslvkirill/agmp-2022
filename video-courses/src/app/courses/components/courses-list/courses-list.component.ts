@@ -1,15 +1,11 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter, Observable, switchMap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { filter, Observable } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
+import { COURSES_ACTIONS } from 'src/app/store/courses';
 
 import { ModalService } from '../../../shared/services/modal/modal.service';
-import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types';
 
 @Component({
@@ -24,9 +20,8 @@ export class CoursesListComponent {
   readonly noDataMessage = 'Feel free to add new course';
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    private store: Store,
     private modalService: ModalService,
-    private coursesService: CoursesService,
     private router: Router
   ) {}
 
@@ -40,15 +35,10 @@ export class CoursesListComponent {
 
   onDelete(course: CourseInfo): void {
     this.openModal()
-      .pipe(
-        filter((result) => result?.value?.result),
-        switchMap(() => this.coursesService.removeCourse(course.id)),
-        switchMap(() => this.coursesService.getCourses())
-      )
-      .subscribe((courses) => {
-        this.courses = courses;
-        this.cdr.markForCheck();
-      });
+      .pipe(filter((result) => result?.value?.result))
+      .subscribe(() =>
+        this.store.dispatch(COURSES_ACTIONS.deleteCourse({ id: course.id }))
+      );
   }
 
   private openModal(): Observable<ModalResponse> {

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { PAGINATION } from 'src/app/shared/constants';
@@ -23,7 +28,11 @@ export class CoursesComponent implements OnInit {
 
   courses: CourseInfo[];
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(
+    private store: Store,
+    private cdr: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initCourses();
@@ -45,6 +54,9 @@ export class CoursesComponent implements OnInit {
 
   private initCourses(): void {
     this.store.dispatch(COURSES_ACTIONS.coursesInit());
-    this.courses$.subscribe((courses) => (this.courses = courses));
+    this.courses$.subscribe((courses) => {
+      this.courses = courses;
+      this.cdr.markForCheck();
+    });
   }
 }

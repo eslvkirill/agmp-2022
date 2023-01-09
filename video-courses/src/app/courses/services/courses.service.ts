@@ -52,8 +52,8 @@ export class CoursesService {
     );
   }
 
-  removeCourse(id: number): Observable<CourseInfo> {
-    return this.http.delete<CourseInfo>(`${this.coursesApiPrefix}/${id}`);
+  removeCourse(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.coursesApiPrefix}/${id}`);
   }
 
   getAuthors(): Observable<AuthorsInfo[]> {

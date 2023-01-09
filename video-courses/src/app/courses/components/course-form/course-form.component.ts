@@ -1,12 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { NEW_COURSE } from 'src/app/shared/constants';
 import { getRandomNumber } from 'src/app/shared/utils/random.utils';
+import { COURSES_ACTIONS, selectCourseById } from 'src/app/store/courses';
 
 import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types/course.interface';
@@ -24,12 +21,13 @@ export class CourseFormComponent implements OnInit {
   dateValue: Date;
   isTopRated: boolean;
   courseTitleBatchName: string;
-  course?: CourseInfo;
+  course: CourseInfo | null;
   courseId: string;
 
+  private readonly course$ = this.store.select(selectCourseById);
+
   constructor(
-    private cdr: ChangeDetectorRef,
-    private router: Router,
+    private store: Store,
     private route: ActivatedRoute,
     private coursesService: CoursesService
   ) {}
@@ -78,13 +76,17 @@ export class CourseFormComponent implements OnInit {
     const { id } = this.route.snapshot.params;
     this.courseId = id;
 
-    this.coursesService.getCourseById(id).subscribe((courses) => {
-      const [course] = courses;
+    this.courseId === NEW_COURSE.ID
+      ? this.initCourseTitleBatchName()
+      : this.setExistingCourse(Number(this.courseId));
+  }
 
+  private setExistingCourse(courseId: number): void {
+    this.store.dispatch(COURSES_ACTIONS.getCoursebyId({ id: courseId }));
+    this.course$.subscribe((course) => {
       this.course = course;
       this.initCourseData();
       this.initCourseTitleBatchName();
-      this.cdr.markForCheck();
     });
   }
 
@@ -105,13 +107,15 @@ export class CourseFormComponent implements OnInit {
   }
 
   private initAuthors(): void {
-    this.coursesService.getAuthors().subscribe();
+    this.store.dispatch(COURSES_ACTIONS.initCourseAuthors());
   }
 
   private createCourse(): void {
     if (this.isFormFieldsEmpty) return;
 
-    this.coursesService.createCourse(this.getCourseDataOnChange).subscribe();
+    this.store.dispatch(
+      COURSES_ACTIONS.createNewCourse({ course: this.getCourseDataOnChange })
+    );
     this.onCancel();
   }
 
@@ -124,7 +128,7 @@ export class CourseFormComponent implements OnInit {
       isTopRated: this.isTopRated,
     };
 
-    this.coursesService.updateCourse(course).subscribe();
+    this.store.dispatch(COURSES_ACTIONS.editCourse({ course: course }));
     this.onCancel();
   }
 }
