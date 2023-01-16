@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
@@ -26,7 +27,7 @@ export class AuthComponent implements OnInit {
   firstName: string;
   lastName: string;
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.user = this.authService.getUserInfo();
@@ -44,5 +45,6 @@ export class AuthComponent implements OnInit {
 
     this.authService.logout();
     this.setAuth.emit();
+    this.router.navigate(['login']);
   }
 }

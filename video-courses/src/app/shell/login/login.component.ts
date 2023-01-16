@@ -1,9 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../header/services/auth.service';
 
@@ -14,13 +10,11 @@ import { AuthService } from '../header/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  @Output() setAuth: EventEmitter<void> = new EventEmitter();
-
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   login(): void {
     this.authService.login();
-    this.setAuth.emit();
+    this.router.navigate(['courses']);
 
     console.log('logged in successfully');
   }

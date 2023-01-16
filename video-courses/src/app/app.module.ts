@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesModule } from './courses/courses.module';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { SharedModule } from './shared/shared.module';
 import { ShellModule } from './shell/shell.module';
 
@@ -18,7 +19,7 @@ import { ShellModule } from './shell/shell.module';
     SharedModule,
     CoursesModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,6 +4,7 @@ import {
   Component,
   Input,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { filter, Observable } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
 
@@ -27,7 +28,8 @@ export class CoursesListComponent {
   constructor(
     private cdr: ChangeDetectorRef,
     private modalService: ModalService,
-    private coursesService: CoursesService
+    private coursesService: CoursesService,
+    private router: Router
   ) {}
 
   trackByFn(index: number, course: CourseInfo): string {
@@ -35,7 +37,7 @@ export class CoursesListComponent {
   }
 
   onEdit(course: CourseInfo): void {
-    console.log('Edit: ', course.id);
+    this.router.navigate(['courses', course.id]);
   }
 
   onDelete(course: CourseInfo): void {

@@ -1,8 +1,13 @@
-@use "../../styles/helpers" as *;
+.courses {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 90px;
 
-.add-course {
-  padding: 3px 20px;
-  height: 35px;
+  &__add-btn {
+    padding: 3px 20px;
+    height: 35px;
+  }
 }
 
 app-courses-list {

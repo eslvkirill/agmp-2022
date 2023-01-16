@@ -4,22 +4,22 @@ import { By } from '@angular/platform-browser';
 import { faCalendarDays, faClock } from '@fortawesome/free-solid-svg-icons';
 import { first } from 'rxjs';
 
+import { DurationPipe } from '../../../shared/pipes/duration/duration.pipe';
 import { COURSES } from '../../constants';
 import { CourseInfo } from '../../types/course.interface';
-import { CourseComponent } from './course.component';
-import { DurationPipe } from '../../../shared/pipes/duration/duration.pipe';
+import { CourseItemComponent } from './course-item.component';
 
-describe('CourseComponent', () => {
-  let component: CourseComponent;
-  let fixture: ComponentFixture<CourseComponent>;
+describe('CourseItemComponent', () => {
+  let component: CourseItemComponent;
+  let fixture: ComponentFixture<CourseItemComponent>;
   let expectedCourse: CourseInfo;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      declarations: [CourseComponent, DurationPipe],
+      declarations: [CourseItemComponent, DurationPipe],
     });
-    fixture = TestBed.createComponent(CourseComponent);
+    fixture = TestBed.createComponent(CourseItemComponent);
     component = fixture.componentInstance;
 
     expectedCourse = COURSES[0];
