@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { filter, Observable, switchMap } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
 
-import { ModalService } from '../../../shared/services/modal/modal.service';
+import { ModalService } from '../../../shared/services/modal.service';
 import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types';
 

@@ -5,7 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COURSES } from '../../constants/courses.constants';
 import { CourseInfo } from '../../types/course.interface';
 import { CoursesListComponent } from './courses-list.component';
-import { ModalService } from '../../../shared/services/modal/modal.service';
+import { ModalService } from '../../../shared/services/modal.service';
 import { CoursesService } from '../../services/courses.service';
 import { OrderByPipe } from '../../../shared/pipes/order-by/order-by.pipe';
 

@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 
+import { NavigationService } from '../../../../shared/services/navigation.service';
 import { AuthService } from '../../services/auth.service';
 import { UserInfo } from '../../types/auth.interface';
 
@@ -29,7 +30,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +41,7 @@ export class AuthComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.setAuth.emit();
-    this.authService.redirectToLoginPage();
+    this.navigationService.redirectToLoginPage();
   }
 
   private initUserInfo(): void {

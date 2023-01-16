@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { ModalWrapperComponent } from '../../components/modals/modal-wrapper/modal-wrapper.component';
-import { ModalConfig } from '../../types';
+import { ModalWrapperComponent } from '../components/modals/modal-wrapper/modal-wrapper.component';
+import { ModalConfig } from '../types';
 
 @Injectable({
   providedIn: 'root',

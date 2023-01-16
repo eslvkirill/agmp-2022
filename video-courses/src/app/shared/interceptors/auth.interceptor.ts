@@ -9,10 +9,14 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from 'src/app/shell/header/services/auth.service';
 
 import { HttpErrorStatus } from '../enums';
+import { NavigationService } from '../services/navigation.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private navigationService: NavigationService
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -23,7 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: any) => {
         if (error.status === HttpErrorStatus.Unauthorized) {
-          this.authService.redirectToLoginPage();
+          this.navigationService.redirectToLoginPage();
         }
         return throwError(error);
       })

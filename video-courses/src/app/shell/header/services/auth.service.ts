@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { BACKEND_URL, ENDPOINT } from 'src/app/shared/constants';
 
@@ -14,7 +13,7 @@ const TOKEN_KEY = 'token';
 export class AuthService {
   private readonly authApiPrefix = `${BACKEND_URL}/${ENDPOINT.AUTH}`;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   get getAuthToken(): string | null {
     return localStorage.getItem(TOKEN_KEY);
@@ -38,9 +37,5 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(TOKEN_KEY);
-  }
-
-  redirectToLoginPage(): Promise<boolean> {
-    return this.router.navigate(['login']);
   }
 }

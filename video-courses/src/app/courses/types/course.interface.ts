@@ -14,14 +14,4 @@ interface AuthorsInfo {
   lastName?: string;
 }
 
-interface CoursesPaginateInfo {
-  courses: CourseInfo[];
-  totalCount: number;
-}
-
-interface CoursesSearchData {
-  courses: CourseInfo[];
-  searchValue: string;
-}
-
-export { CourseInfo, AuthorsInfo, CoursesPaginateInfo, CoursesSearchData };
+export { CourseInfo, AuthorsInfo };
