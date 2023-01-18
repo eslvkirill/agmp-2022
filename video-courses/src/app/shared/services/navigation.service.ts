@@ -10,4 +10,8 @@ export class NavigationService {
   redirectToLoginPage(): Promise<boolean> {
     return this.router.navigate(['login']);
   }
+
+  redirectToCoursesPage(): void {
+    this.router.navigate(['courses']);
+  }
 }

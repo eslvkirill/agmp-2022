@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { BACKEND_URL, ENDPOINT } from 'src/app/shared/constants';
 
-import { AuthToken, LoginInfo, UserInfo } from '../types';
+import { AuthToken, LoginInfo, UserInfo } from '../../types';
 
 const TOKEN_KEY = 'token';
 

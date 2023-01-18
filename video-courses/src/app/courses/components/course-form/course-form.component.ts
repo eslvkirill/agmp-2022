@@ -10,6 +10,7 @@ import { getRandomNumber } from 'src/app/shared/utils/random.utils';
 
 import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types/course.interface';
+import { NavigationService } from '../../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-course-form',
@@ -29,8 +30,8 @@ export class CourseFormComponent implements OnInit {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private router: Router,
     private route: ActivatedRoute,
+    private navigationService: NavigationService,
     private coursesService: CoursesService
   ) {}
 
@@ -71,7 +72,7 @@ export class CourseFormComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.coursesService.redirectToCoursesPage();
+    this.navigationService.redirectToCoursesPage();
   }
 
   private initCourse(): void {
@@ -112,7 +113,7 @@ export class CourseFormComponent implements OnInit {
     if (this.isFormFieldsEmpty) return;
 
     this.coursesService.createCourse(this.getCourseDataOnChange).subscribe();
-    this.coursesService.redirectToCoursesPage();
+    this.navigationService.redirectToCoursesPage();
   }
 
   private updateCourse(): void {
@@ -125,6 +126,6 @@ export class CourseFormComponent implements OnInit {
     };
 
     this.coursesService.updateCourse(course).subscribe();
-    this.coursesService.redirectToCoursesPage();
+    this.navigationService.redirectToCoursesPage();
   }
 }

@@ -1,0 +1,6 @@
+const SEARCH_OPTIONS = {
+  DEBOUNCE: 1000,
+  MIN_LENGTH: 3,
+};
+
+export { SEARCH_OPTIONS };

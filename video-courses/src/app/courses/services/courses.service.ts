@@ -59,8 +59,4 @@ export class CoursesService {
   getAuthors(): Observable<AuthorsInfo[]> {
     return this.http.get<AuthorsInfo[]>(this.authorsApiPrefix);
   }
-
-  redirectToCoursesPage(): void {
-    this.router.navigate(['courses']);
-  }
 }

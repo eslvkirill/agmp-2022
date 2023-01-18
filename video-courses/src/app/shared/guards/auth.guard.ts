@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { AuthService } from '../../shell/header/services/auth.service';
+import { AuthService } from '../../shell/header/services/auth/auth.service';
 import { NavigationService } from '../services/navigation.service';
 
 @Injectable()
