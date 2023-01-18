@@ -15,6 +15,7 @@ import { AuthService } from './header/services/auth.service';
 })
 export class ShellComponent implements OnInit {
   @Input() batchName?: string;
+
   isAuthenticated: boolean;
 
   constructor(private authService: AuthService) {}

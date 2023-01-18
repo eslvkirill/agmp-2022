@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+
+import { PAGINATION } from '../../constants';
 
 @Component({
   selector: 'app-pagination',
@@ -7,7 +15,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {
+  @Input() coursesCount: number;
+  @Output() paginateCourses: EventEmitter<number> = new EventEmitter();
+
   paginate(): void {
-    console.log('Load more');
+    this.coursesCount += PAGINATION.SIZE;
+    this.paginateCourses.emit(this.coursesCount);
   }
 }

@@ -5,11 +5,10 @@ import {
   Input,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, switchMap } from 'rxjs';
 import { ModalResponse } from 'src/app/shared/types';
 
-import { OrderDirection } from '../../../shared/enums/orderDirection.enum';
-import { ModalService } from '../../../shared/services/modal/modal.service';
+import { ModalService } from '../../../shared/services/modal.service';
 import { CoursesService } from '../../services/courses.service';
 import { CourseInfo } from '../../types';
 
@@ -23,7 +22,6 @@ export class CoursesListComponent {
   @Input() courses: CourseInfo[];
 
   readonly noDataMessage = 'Feel free to add new course';
-  readonly orderDirection = OrderDirection.DESC;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -32,7 +30,7 @@ export class CoursesListComponent {
     private router: Router
   ) {}
 
-  trackByFn(index: number, course: CourseInfo): string {
+  trackByFn(index: number, course: CourseInfo): number {
     return course.id;
   }
 
@@ -42,9 +40,13 @@ export class CoursesListComponent {
 
   onDelete(course: CourseInfo): void {
     this.openModal()
-      .pipe(filter((result) => result?.value?.result))
-      .subscribe(() => {
-        this.courses = this.coursesService.removeItem(course.id);
+      .pipe(
+        filter((result) => result?.value?.result),
+        switchMap(() => this.coursesService.removeCourse(course.id)),
+        switchMap(() => this.coursesService.getCourses())
+      )
+      .subscribe((courses) => {
+        this.courses = courses;
         this.cdr.markForCheck();
       });
   }

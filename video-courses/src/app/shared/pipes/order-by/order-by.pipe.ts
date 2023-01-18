@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { CourseInfo } from '../../../courses/types/course.interface';
-import { OrderDirection } from '../../enums/index';
+import { OrderDirection } from '../../enums';
 
 @Pipe({
   name: 'orderBy',
@@ -13,8 +13,8 @@ export class OrderByPipe implements PipeTransform {
     const order = direction === OrderDirection.ASC ? 1 : -1;
 
     return [...courses].sort((a, b) => {
-      const firstElement = a.creationDate.getTime();
-      const secondElement = b.creationDate.getTime();
+      const firstElement = a.date;
+      const secondElement = b.date;
 
       if (firstElement > secondElement) {
         return order;

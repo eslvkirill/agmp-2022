@@ -6,7 +6,7 @@ const TWO_WEEKS = 14;
   selector: '[appBorderColor]',
 })
 export class BorderColorDirective implements OnInit {
-  @Input('appBorderColor') creationDate: Date;
+  @Input('appBorderColor') date: Date;
 
   private readonly currentDate = new Date();
   private readonly freshCourseDate = new Date();
@@ -20,10 +20,9 @@ export class BorderColorDirective implements OnInit {
 
   private setBorderColorStyle(): void {
     const { style } = this.elementRef.nativeElement;
-    const isUnreleasedCourse = this.creationDate > this.currentDate;
+    const isUnreleasedCourse = this.date > this.currentDate;
     const isCourseFresh =
-      this.creationDate < this.currentDate &&
-      this.creationDate >= this.freshCourseDate;
+      this.date < this.currentDate && this.date >= this.freshCourseDate;
 
     if (isCourseFresh || isUnreleasedCourse) {
       style.borderWidth = '4px';

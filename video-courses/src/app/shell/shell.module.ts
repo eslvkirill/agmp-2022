@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -16,7 +17,13 @@ import { ShellComponent } from './shell.component';
     FooterComponent,
     LoginComponent,
   ],
-  imports: [CommonModule, HeaderModule, MaterialModule, SharedModule],
+  imports: [
+    CommonModule,
+    HeaderModule,
+    MaterialModule,
+    FormsModule,
+    SharedModule,
+  ],
   exports: [
     ShellComponent,
     BreadcrumbComponent,

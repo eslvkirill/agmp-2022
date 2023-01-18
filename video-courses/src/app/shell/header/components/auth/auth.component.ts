@@ -1,15 +1,16 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   OnInit,
   Output,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 
+import { NavigationService } from '../../../../shared/services/navigation.service';
 import { AuthService } from '../../services/auth.service';
-import { UserData } from '../../types/auth.interface';
+import { UserInfo } from '../../types/auth.interface';
 
 @Component({
   selector: 'app-auth',
@@ -23,28 +24,42 @@ export class AuthComponent implements OnInit {
   readonly loginIcon = faUserLarge;
   readonly logoffIcon = faSignOut;
 
-  user: UserData | null;
+  user: UserInfo;
   firstName: string;
   lastName: string;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService,
+    private navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
-    this.user = this.authService.getUserInfo();
-
-    if (!this.user) return;
-
-    const { firstName, lastName } = this.user;
-
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.initUserInfo();
   }
 
   logout(): void {
-    console.log(`Logout: ${this.firstName} ${this.lastName}`);
-
     this.authService.logout();
     this.setAuth.emit();
-    this.router.navigate(['login']);
+    this.navigationService.redirectToLoginPage();
+  }
+
+  private initUserInfo(): void {
+    const token = this.authService.getAuthToken;
+
+    this.authService.getUserInfo(token).subscribe((userInfo) => {
+      this.user = userInfo;
+      this.getUserData();
+      this.cdr.markForCheck();
+    });
+  }
+
+  private getUserData(): void {
+    if (!this.user) return;
+
+    const { first, last } = this.user.name;
+
+    this.firstName = first;
+    this.lastName = last;
   }
 }

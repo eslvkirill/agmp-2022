@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 
+import { CoursesService } from '../../courses/services/courses.service';
 import { AuthService } from '../header/services/auth.service';
 
 @Component({
@@ -10,12 +10,24 @@ import { AuthService } from '../header/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  constructor(private router: Router, private authService: AuthService) {}
+  emailValue: string;
+  passwordValue: string;
+
+  constructor(
+    private authService: AuthService,
+    private coursesService: CoursesService
+  ) {}
 
   login(): void {
-    this.authService.login();
-    this.router.navigate(['courses']);
+    if (!this.emailValue || !this.passwordValue) return;
 
-    console.log('logged in successfully');
+    const data = {
+      login: this.emailValue,
+      password: this.passwordValue,
+    };
+
+    this.authService
+      .login(data)
+      .subscribe(() => this.coursesService.redirectToCoursesPage());
   }
 }
