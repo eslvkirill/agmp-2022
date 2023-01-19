@@ -9,7 +9,7 @@
     ></app-button>
     <app-courses-list [courses]="courses"></app-courses-list>
     <app-pagination 
-      *ngIf="courses?.length"
+      *ngIf="showPaginationButton"
       [coursesCount]="coursesCount"
       (paginateCourses)="paginateCourses($event)"
     ></app-pagination>
