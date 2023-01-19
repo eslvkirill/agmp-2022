@@ -9,16 +9,22 @@ import { COURSES_ACTIONS } from '.';
 @Injectable()
 export class CoursesEffects {
   constructor(
-    private actions$: Actions<{ type: string; id: number; course: CourseInfo }>,
+    private actions$: Actions<{
+      type: string;
+      id: number;
+      course: CourseInfo;
+      courseCount: number;
+      searchValue: string;
+    }>,
     private coursesService: CoursesService
   ) {}
 
   fetchCourses$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(COURSES_ACTIONS.coursesInit.type),
-      switchMap(() =>
+      switchMap((action) =>
         this.coursesService
-          .getCourses()
+          .getCourses(action.courseCount, action.searchValue)
           .pipe(
             map((courses) => COURSES_ACTIONS.fetchCoursesSuccess({ courses }))
           )
@@ -85,7 +91,12 @@ export class CoursesEffects {
       switchMap((action) =>
         this.coursesService.removeCourse(action.id).pipe(
           tap(() => COURSES_ACTIONS.deleteCourseSuccess()),
-          switchMap(async () => COURSES_ACTIONS.coursesInit())
+          switchMap(async () =>
+            COURSES_ACTIONS.coursesInit({
+              courseCount: action.courseCount,
+              searchValue: action.searchValue,
+            })
+          )
         )
       )
     );

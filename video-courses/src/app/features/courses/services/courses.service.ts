@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {
   BACKEND_URL,
@@ -19,7 +18,7 @@ export class CoursesService {
   private readonly coursesApiPrefix = `${this.apiPrefix}${ENDPOINT.COURSES}`;
   private readonly authorsApiPrefix = `${this.apiPrefix}${ENDPOINT.AUTHORS}`;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   getCourses(
     count = PAGINATION.SIZE,
@@ -58,9 +57,5 @@ export class CoursesService {
 
   getAuthors(): Observable<AuthorsInfo[]> {
     return this.http.get<AuthorsInfo[]>(this.authorsApiPrefix);
-  }
-
-  redirectToCoursesPage(): void {
-    this.router.navigate(['courses']);
   }
 }

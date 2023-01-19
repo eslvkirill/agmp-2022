@@ -13,6 +13,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input() isAuthenticated: boolean;
+  @Input() isAuthenticated: boolean | null;
   @Output() setAuth: EventEmitter<void> = new EventEmitter();
 }

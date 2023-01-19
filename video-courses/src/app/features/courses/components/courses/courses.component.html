@@ -1,8 +1,5 @@
 <app-shell>
-  <app-search 
-    [coursesCount]="coursesCount" 
-    (search)="onSearch($event)"
-  ></app-search>
+  <app-search (search)="onSearch($event)"></app-search>
   <div class="courses">
     <app-button
       class="courses__add-btn"
@@ -14,7 +11,6 @@
     <app-pagination 
       *ngIf="courses?.length"
       [coursesCount]="coursesCount"
-      [searchValue]="searchValue"
       (paginateCourses)="paginateCourses($event)"
     ></app-pagination>
   </div>

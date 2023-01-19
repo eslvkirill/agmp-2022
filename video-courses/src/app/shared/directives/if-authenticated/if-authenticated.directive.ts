@@ -9,7 +9,9 @@ export class IfAuthenticatedDirective {
     private viewContainer: ViewContainerRef
   ) {}
 
-  @Input('appIfAuthenticated') set isAuthenticated(isAuthenticated: boolean) {
+  @Input('appIfAuthenticated') set isAuthenticated(
+    isAuthenticated: boolean | null
+  ) {
     if (isAuthenticated) {
       this.viewContainer.createEmbeddedView(this.templateRef);
       return;

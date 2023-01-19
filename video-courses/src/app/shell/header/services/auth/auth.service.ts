@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BACKEND_URL, ENDPOINT } from 'src/app/shared/constants';
 
 import { AuthToken, LoginInfo, UserInfo } from '../../types';
@@ -14,10 +13,14 @@ const TOKEN_KEY = 'token';
 export class AuthService {
   private readonly authApiPrefix = `${BACKEND_URL}/${ENDPOINT.AUTH}`;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   get getAuthToken(): string | null {
     return localStorage.getItem(TOKEN_KEY);
+  }
+
+  set setAuthToken(token: string) {
+    localStorage.setItem(TOKEN_KEY, token);
   }
 
   get isAuthenticated(): boolean {
@@ -25,9 +28,7 @@ export class AuthService {
   }
 
   login(data: LoginInfo): Observable<AuthToken> {
-    return this.http
-      .post<AuthToken>(`${this.authApiPrefix}/login`, data)
-      .pipe(tap((response) => localStorage.setItem(TOKEN_KEY, response.token)));
+    return this.http.post<AuthToken>(`${this.authApiPrefix}/login`, data);
   }
 
   getUserInfo(token: string | null): Observable<UserInfo> {
@@ -38,9 +39,5 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(TOKEN_KEY);
-  }
-
-  redirectToLoginPage(): Promise<boolean> {
-    return this.router.navigate(['login']);
   }
 }

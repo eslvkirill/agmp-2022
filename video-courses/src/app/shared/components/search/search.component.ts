@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Input,
   OnDestroy,
   Output,
 } from '@angular/core';
@@ -14,10 +13,7 @@ import {
   map,
   Subject,
   Subscription,
-  switchMap,
 } from 'rxjs';
-import { CoursesService } from 'src/app/features/courses/services/courses.service';
-import { CoursesSearchData } from 'src/app/features/courses/types';
 
 import { SEARCH_OPTIONS } from '../../constants';
 
@@ -28,17 +24,14 @@ import { SEARCH_OPTIONS } from '../../constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnDestroy {
-  @Input() coursesCount: number;
-  @Output() search: EventEmitter<CoursesSearchData> = new EventEmitter();
+  @Output() search: EventEmitter<string> = new EventEmitter();
 
   readonly searchIcon = faSearch;
-
   readonly keyUp = new Subject<KeyboardEvent>();
 
   private subscription: Subscription;
-  private searchValue: string;
 
-  constructor(private coursesService: CoursesService) {
+  constructor() {
     this.onSearch();
   }
 
@@ -49,18 +42,11 @@ export class SearchComponent implements OnDestroy {
   private onSearch(): void {
     this.subscription = this.keyUp
       .pipe(
-        map((event) =>
-          (this.searchValue = (event?.target as HTMLInputElement)?.value).trim()
-        ),
-        filter((event) => event.length >= SEARCH_OPTIONS.MIN_LENGTH),
+        map((event) => (event?.target as HTMLInputElement)?.value.trim()),
+        filter((event) => !event || event.length >= SEARCH_OPTIONS.MIN_LENGTH),
         debounceTime(SEARCH_OPTIONS.DEBOUNCE),
-        distinctUntilChanged(),
-        switchMap((event) =>
-          this.coursesService.getCourses(this.coursesCount, event)
-        )
+        distinctUntilChanged()
       )
-      .subscribe((courses) =>
-        this.search.emit({ courses, searchValue: this.searchValue })
-      );
+      .subscribe((event) => this.search.emit(event));
   }
 }

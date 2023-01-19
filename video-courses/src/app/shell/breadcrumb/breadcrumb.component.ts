@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CoursesService } from 'src/app/features/courses/services/courses.service';
+
+import { NavigationService } from '../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -10,9 +11,9 @@ import { CoursesService } from 'src/app/features/courses/services/courses.servic
 export class BreadcrumbComponent {
   @Input() batchName?: string;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(private navigationService: NavigationService) {}
 
   goToCourses(): void {
-    this.coursesService.redirectToCoursesPage();
+    this.navigationService.redirectToCoursesPage();
   }
 }

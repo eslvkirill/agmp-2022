@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CoursesService } from 'src/app/features/courses/services/courses.service';
-import { AuthService } from 'src/app/shell/header/services/auth/auth.service';
+import { Store } from '@ngrx/store';
+import { USER_ACTIONS } from 'src/app/store/user';
+
+import { NavigationService } from '../../../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -13,20 +15,22 @@ export class LoginComponent {
   passwordValue: string;
 
   constructor(
-    private authService: AuthService,
-    private coursesService: CoursesService
+    private store: Store,
+    private navigationService: NavigationService
   ) {}
 
   login(): void {
     if (!this.emailValue || !this.passwordValue) return;
 
-    const data = {
-      login: this.emailValue,
-      password: this.passwordValue,
-    };
+    this.store.dispatch(
+      USER_ACTIONS.login({
+        loginInfo: {
+          login: this.emailValue,
+          password: this.passwordValue,
+        },
+      })
+    );
 
-    this.authService
-      .login(data)
-      .subscribe(() => this.coursesService.redirectToCoursesPage());
+    this.navigationService.redirectToCoursesPage();
   }
 }

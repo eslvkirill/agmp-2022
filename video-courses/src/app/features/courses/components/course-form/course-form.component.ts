@@ -10,7 +10,7 @@ import { NEW_COURSE } from 'src/app/shared/constants';
 import { getRandomNumber } from 'src/app/shared/utils/random.utils';
 import { COURSES_ACTIONS, selectCourseById } from 'src/app/store/courses';
 
-import { CoursesService } from '../../services/courses.service';
+import { NavigationService } from '../../../../shared/services/navigation.service';
 import { CourseInfo } from '../../types/course.interface';
 
 @Component({
@@ -35,7 +35,7 @@ export class CourseFormComponent implements OnInit {
     private store: Store,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private coursesService: CoursesService
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
@@ -75,7 +75,7 @@ export class CourseFormComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.coursesService.redirectToCoursesPage();
+    this.navigationService.redirectToCoursesPage();
   }
 
   private initCourse(): void {

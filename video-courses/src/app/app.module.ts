@@ -12,8 +12,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { interceptors } from './shared/interceptors';
 import { ShellModule } from './shell/shell.module';
-import { metaReducers, reducers } from './store';
-import { CoursesEffects } from './store/courses';
+import { effects, metaReducers, reducers } from './store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +22,7 @@ import { CoursesEffects } from './store/courses';
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([CoursesEffects]),
+    EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

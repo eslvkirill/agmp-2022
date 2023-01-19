@@ -10,11 +10,7 @@ import { PAGINATION } from 'src/app/shared/constants';
 import { ButtonType } from 'src/app/shared/enums';
 import { COURSES_ACTIONS, selectAllCourses } from 'src/app/store/courses';
 
-import {
-  CourseInfo,
-  CoursesPaginateInfo,
-  CoursesSearchData,
-} from '../../types';
+import { CourseInfo } from '../../types';
 
 @Component({
   selector: 'app-courses',
@@ -29,6 +25,7 @@ export class CoursesComponent implements OnInit {
 
   coursesCount = PAGINATION.SIZE;
   searchValue = '';
+  showPaginationButton = false;
 
   courses: CourseInfo[];
 
@@ -42,25 +39,36 @@ export class CoursesComponent implements OnInit {
     this.initCourses();
   }
 
-  onSearch(searchData: CoursesSearchData): void {
-    this.courses = searchData.courses;
-    this.searchValue = searchData.searchValue;
-  }
-
   addCourse(): void {
     this.router.navigate(['courses', 'new']);
   }
 
-  paginateCourses(paginateInfo: CoursesPaginateInfo): void {
-    this.courses = paginateInfo.courses;
-    this.coursesCount = paginateInfo.totalCount;
+  onSearch(searchValue: string): void {
+    this.initCourses(this.coursesCount, searchValue);
+    this.searchValue = searchValue;
   }
 
-  private initCourses(): void {
-    this.store.dispatch(COURSES_ACTIONS.coursesInit());
+  paginateCourses(totalCount: number): void {
+    this.initCourses(totalCount, this.searchValue);
+    this.coursesCount = totalCount;
+  }
+
+  private initCourses(courseCount = PAGINATION.SIZE, searchValue = ''): void {
+    this.store.dispatch(
+      COURSES_ACTIONS.coursesInit({ courseCount, searchValue })
+    );
     this.courses$.subscribe((courses) => {
       this.courses = courses;
+      this.setPaginationBtnVisability(courses.length);
       this.cdr.markForCheck();
     });
+  }
+
+  private setPaginationBtnVisability(coursesLength: number): void {
+    this.showPaginationButton = !!coursesLength;
+
+    if (this.coursesCount > coursesLength) {
+      this.showPaginationButton = false;
+    }
   }
 }
