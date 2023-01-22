@@ -10,6 +10,13 @@ const userReducer = createReducer(
     (state, { userInfo }): UserState => ({ ...state, userInfo: userInfo })
   ),
   on(USER_ACTIONS.login, (state): UserState => ({ ...state })),
+  on(
+    USER_ACTIONS.loginError,
+    (state, { errorMessage }): UserState => ({
+      ...state,
+      errorMessage: errorMessage,
+    })
+  ),
   on(USER_ACTIONS.logoutUser, (state): UserState => ({ ...state })),
   on(
     USER_ACTIONS.setAuthenticated,

@@ -7,6 +7,7 @@ const getUserActionName = (typeName: string): string =>
 
 export const USER_TYPES = {
   LOGIN: getUserActionName('Login'),
+  LOGIN_ERROR: getUserActionName('Login Error'),
   LOGOUT_USER: getUserActionName('Logout User'),
   USER_AUTHENTICATED: getUserActionName('User Authenticated'),
   USER_SET_AUTHENTICATED: getUserActionName('User Set Authenticated'),

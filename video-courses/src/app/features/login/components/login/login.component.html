@@ -2,7 +2,7 @@
   <mat-card class="login-page">
     <mat-card-title class="login-page__title">Login</mat-card-title>
     <mat-card-content class="login-page__content">
-      <form class="login-page__form form">
+      <form #loginForm="ngForm" class="login-page__form form">
         <div class="form__email email">
           <div class="email__header">
             <label class="email__header_title" for="email">E-mail:</label>
@@ -16,7 +16,8 @@
               id="email"
               type="email"
               name="email"
-              [(ngModel)]="emailValue"
+              required
+              [(ngModel)]="user.email"
               matInput
               placeholder="Enter e-mail"
             />
@@ -35,12 +36,14 @@
               id="password"
               type="password"
               name="password"
-              [(ngModel)]="passwordValue"
+              required
+              [(ngModel)]="user.password"
               matInput
               placeholder="Enter password"
             />
           </mat-form-field>
         </div>
+        <div class="error-message">{{ errorMessage$ | async }}</div>
         <div class="form__actions actions">
           <a 
             href="#" 
@@ -49,10 +52,11 @@
             Forgot password?
           </a>
           <button 
-            type="button"
+            type="submit"
             mat-button
             mat-stroked-button
             class="actions__login"
+            [disabled]="loginForm.invalid"
             (click)="login()"
           >
             Login

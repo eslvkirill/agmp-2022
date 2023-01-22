@@ -20,4 +20,14 @@ const selectAuthenticatedFlag = createSelector(
   (state: UserState) => state.isAuthenticated
 );
 
-export { selectUserName, selectUserToken, selectAuthenticatedFlag };
+const selectLoginErrorMessage = createSelector(
+  selectUser,
+  (state: UserState) => state.errorMessage
+);
+
+export {
+  selectUserName,
+  selectUserToken,
+  selectAuthenticatedFlag,
+  selectLoginErrorMessage,
+};

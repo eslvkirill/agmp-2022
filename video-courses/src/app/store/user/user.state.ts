@@ -5,6 +5,7 @@ interface UserState {
   userName: string;
   token: string | null;
   isAuthenticated: boolean;
+  errorMessage: string;
 }
 
 const initialState: UserState = {
@@ -12,6 +13,7 @@ const initialState: UserState = {
   userName: '',
   token: null,
   isAuthenticated: false,
+  errorMessage: '',
 };
 
 export { UserState, initialState };

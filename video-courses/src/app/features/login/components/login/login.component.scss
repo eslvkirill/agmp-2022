@@ -29,6 +29,11 @@
       }
     }
 
+    .error-message {
+      color: $error-color;
+      font-size: 12px;
+    }
+
     .actions {
       @include flex-vertical();
       justify-content: space-between;
