@@ -40,9 +40,9 @@ export class DurationControlComponent implements ControlValueAccessor {
     this.cdr.markForCheck();
   }
 
-  onDurationChange(newDate: number): void {
+  onDurationChange(newDuration: number): void {
     this.onTouched();
-    this.selectedDuration = newDate;
-    this.onChanged(newDate);
+    this.selectedDuration = newDuration;
+    this.onChanged(newDuration);
   }
 }

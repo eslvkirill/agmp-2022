@@ -1,0 +1,40 @@
+<div class="authors">
+
+  <div class="search-authors">
+    <app-search 
+      class="search-authors__control"
+      [searchMinLength]="searchMinLength"
+      (search)="search($event)"
+    ></app-search>
+    
+    <div class="search-authors__list">
+      <div
+        *ngFor="let author of searchAuthors" 
+        class="author"
+      >
+      <div 
+        class="author__name"
+        (click)="addAuthor(author)"
+      >
+        {{ author.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="selected-authors">
+    <div 
+      *ngFor="let author of selectedAuthors" 
+    >
+      <div class="author">
+        <div class="author__name">{{ author.name }}</div>
+        <div 
+          class="author__delete-icon"
+          (click)="removeAuthor(author.id)"
+        >
+          &#10006;
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -72,7 +72,17 @@
       </div>
       <div class="content__authors authors course-form__field">
         <label class="authors" for="authors">Authors:</label>
-        <div>Authors</div>
+        <app-authors
+          formControlName="authors"
+          (setAuthors)="setAuthors($event)"
+          [allAuthors]="authors$ | async"
+        ></app-authors>
+        <span 
+          *ngIf="validateControl('authors')"
+          class="error-message"
+        >
+          Authors is required
+        </span>
       </div>
     </div>
     <div class="course-form__actions actions">

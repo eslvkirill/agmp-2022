@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { AuthorsComponent } from './components/authors/authors.component';
 import { ButtonComponent } from './components/button/button.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { DurationControlComponent } from './components/duration-control/duration-control.component';
@@ -22,6 +23,7 @@ const COMPONENTS = [
   ButtonComponent,
   DatePickerComponent,
   DurationControlComponent,
+  AuthorsComponent,
   PaginationComponent,
   NoDataComponent,
   ModalWrapperComponent,
