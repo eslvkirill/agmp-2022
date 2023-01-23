@@ -1,0 +1,16 @@
+<div class="duration-control">
+  <mat-form-field appearance="outline">
+    <input 
+      id="duration"
+      min="0"
+      type="number" 
+      class="duration__input"
+      placeholder="Duration"
+      name="duration"
+      matInput
+      [ngModel]="selectedDuration"
+      (ngModelChange)="onDurationChange($event)"
+    />
+  </mat-form-field>
+  <div>{{ selectedDuration | duration }}</div>
+</div>

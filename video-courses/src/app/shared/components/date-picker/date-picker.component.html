@@ -1,0 +1,14 @@
+<div class="date-picker">
+  <mat-form-field appearance="outline">
+    <input 
+      id="date"
+      type="date" 
+      class="date"
+      matInput
+      placeholder="Date"
+      name="date"
+      [ngModel]="selectedDate | date: datePipe"
+      (ngModelChange)="onDateChange($event)"
+    />
+  </mat-form-field>
+</div>

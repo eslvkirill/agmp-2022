@@ -1,6 +1,8 @@
+@use "../../../../../styles/helpers/variables" as *;
+
 .course-form {
   width: 33%;
-  margin: 78px auto 0;
+  margin: 20px auto 0;
 
   &__field {
     display: flex;
@@ -11,5 +13,23 @@
   &__actions {
     display: flex;
     justify-content: space-evenly;
+  }
+
+  .disabled {
+    background-color: $disable-btn-bg-color;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: scale(1);
+    }
+  }
+
+  .error-message {
+    font-size: 15px;
+    margin-top: 7px;
+  }
+
+  mat-form-field {
+    margin-bottom: -30px;
   }
 }

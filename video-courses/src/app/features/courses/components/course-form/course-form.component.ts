@@ -4,6 +4,12 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { NEW_COURSE } from 'src/app/shared/constants';
@@ -20,18 +26,25 @@ import { CourseInfo } from '../../types/course.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseFormComponent implements OnInit {
-  durationValue: number;
-  titleValue: string;
-  descriptionValue: string;
-  dateValue: Date;
-  isTopRated: boolean;
   courseTitleBatchName: string;
-  course: CourseInfo | null;
-  courseId: string;
+
+  private titleControl: AbstractControl | null;
+  private course: CourseInfo | null;
+  private courseId: string;
 
   private readonly course$ = this.store.select(selectCourseById);
+  readonly formName = 'courseForm';
+
+  readonly form: FormGroup = this.fb.group({
+    title: ['', [Validators.required, Validators.max(50)]],
+    description: ['', [Validators.required, Validators.max(500)]],
+    date: [null, Validators.required],
+    duration: [0, [Validators.required, Validators.min(1)]],
+    isTopRated: [false],
+  });
 
   constructor(
+    private fb: FormBuilder,
     private store: Store,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
@@ -43,22 +56,16 @@ export class CourseFormComponent implements OnInit {
     this.initAuthors();
   }
 
-  get isFormFieldsEmpty(): boolean {
-    return (
-      !this.titleValue ||
-      !this.dateValue ||
-      !this.durationValue ||
-      !this.descriptionValue
-    );
-  }
+  private get getCourseDataOnChange(): CourseInfo {
+    const { title, date, duration, description, isTopRated } = this.form.value;
 
-  get getCourseDataOnChange(): CourseInfo {
     return {
       id: getRandomNumber(),
-      name: this.titleValue,
-      date: new Date(this.dateValue),
-      length: this.durationValue,
-      description: this.descriptionValue,
+      name: title,
+      date: new Date(date),
+      length: duration,
+      description,
+      isTopRated,
       authors: [
         {
           id: getRandomNumber(),
@@ -66,8 +73,12 @@ export class CourseFormComponent implements OnInit {
           lastName: 'Cooper',
         },
       ],
-      isTopRated: true,
     };
+  }
+
+  validateControl(controlName: string): boolean | undefined {
+    const control = this.form.get(controlName);
+    return control?.invalid && (control?.dirty || control?.touched);
   }
 
   onSave(): void {
@@ -91,6 +102,7 @@ export class CourseFormComponent implements OnInit {
     this.store.dispatch(COURSES_ACTIONS.getCoursebyId({ id: courseId }));
     this.course$.subscribe((course) => {
       this.course = course;
+      this.initTitleControl();
       this.initCourseData();
       this.initCourseTitleBatchName();
       this.cdr.markForCheck();
@@ -102,15 +114,19 @@ export class CourseFormComponent implements OnInit {
 
     const { date, description, length, name, isTopRated } = this.course;
 
-    this.dateValue = date;
-    this.titleValue = name;
-    this.descriptionValue = description;
-    this.durationValue = length;
-    this.isTopRated = isTopRated;
+    this.titleControl?.setValue(name);
+    this.form.get('description')?.setValue(description);
+    this.form.get('duration')?.setValue(length);
+    this.form.get('date')?.setValue(new Date(date));
+    this.form.get('isTopRated')?.setValue(isTopRated);
+  }
+
+  private initTitleControl(): void {
+    this.titleControl = this.form.get('title');
   }
 
   private initCourseTitleBatchName(): void {
-    this.courseTitleBatchName = this.titleValue || NEW_COURSE.TITLE;
+    this.courseTitleBatchName = this.titleControl?.value || NEW_COURSE.TITLE;
   }
 
   private initAuthors(): void {
@@ -118,8 +134,6 @@ export class CourseFormComponent implements OnInit {
   }
 
   private createCourse(): void {
-    if (this.isFormFieldsEmpty) return;
-
     this.store.dispatch(
       COURSES_ACTIONS.createNewCourse({ course: this.getCourseDataOnChange })
     );
@@ -127,15 +141,14 @@ export class CourseFormComponent implements OnInit {
   }
 
   private updateCourse(): void {
-    if (this.isFormFieldsEmpty) return;
-
-    const course = {
-      ...this.getCourseDataOnChange,
-      id: Number(this.courseId),
-      isTopRated: this.isTopRated,
-    };
-
-    this.store.dispatch(COURSES_ACTIONS.editCourse({ course: course }));
+    this.store.dispatch(
+      COURSES_ACTIONS.editCourse({
+        course: {
+          ...this.getCourseDataOnChange,
+          id: Number(this.courseId),
+        },
+      })
+    );
     this.onCancel();
   }
 }
