@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { AuthService } from 'src/app/shell/header/services/auth.service';
+import { AuthService } from 'src/app/shell/header/services/auth/auth.service';
 
 import { HttpErrorStatus } from '../enums';
 import { NavigationService } from '../services/navigation.service';
