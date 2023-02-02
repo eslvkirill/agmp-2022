@@ -9,7 +9,6 @@ import { Store } from '@ngrx/store';
 import { NEW_COURSE } from 'src/app/shared/constants';
 import { getRandomNumber } from 'src/app/shared/utils/random.utils';
 import { COURSES_ACTIONS, selectCourseById } from 'src/app/store/courses';
-
 import { NavigationService } from '../../../../shared/services/navigation.service';
 import { CourseInfo } from '../../types/course.interface';
 

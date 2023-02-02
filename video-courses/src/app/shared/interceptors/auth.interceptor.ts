@@ -8,7 +8,6 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { catchError, Observable, throwError } from 'rxjs';
 import { selectUserToken, USER_ACTIONS } from 'src/app/store/user';
-
 import { HttpErrorStatus } from '../enums';
 import { NavigationService } from '../services/navigation.service';
 

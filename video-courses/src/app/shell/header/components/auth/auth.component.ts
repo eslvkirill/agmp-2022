@@ -12,7 +12,6 @@ import {
   selectUserToken,
   USER_ACTIONS,
 } from 'src/app/store/user';
-
 import { NavigationService } from '../../../../shared/services/navigation.service';
 
 @Component({
