@@ -1,14 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  BACKEND_URL,
-  ENDPOINT,
-  PAGINATION,
-  SORT_DATE,
-} from 'src/app/shared/constants';
-
-import { AuthorsInfo, CourseInfo } from '../types/course.interface';
+import { BACKEND_URL, ENDPOINT, PAGINATION, SORT_DATE, } from 'src/app/shared/constants';
+import { AuthorsInfo, CourseInfo } from '../types';
 
 @Injectable({
   providedIn: 'root',

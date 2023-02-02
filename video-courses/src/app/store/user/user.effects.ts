@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { first, map, switchMap, tap } from 'rxjs';
-import { CoursesService } from 'src/app/features/courses/services/courses.service';
-import { CourseInfo } from 'src/app/features/courses/types';
-
+import { map, switchMap, tap } from 'rxjs';
 import { USER_ACTIONS } from '.';
 import { AuthService } from '../../shell/header/services/auth/auth.service';
-import { AuthToken, LoginInfo, UserInfo } from 'src/app/shell/header/types';
+import { LoginInfo, UserInfo } from 'src/app/shell/header/types';
 
 @Injectable()
 export class UserEffects {

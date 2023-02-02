@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { LoginModule } from './login.module';
 
 describe('LoginModule', () => {

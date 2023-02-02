@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { ButtonComponent } from './components/button/button.component';
 import { ModalWrapperComponent } from './components/modals/modal-wrapper/modal-wrapper.component';
 import { NoDataComponent } from './components/no-data/no-data.component';

@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { CourseInfo } from 'src/app/features/courses/types';
-
 import { COURSES_TYPES } from '../courses.types';
 
 const getCoursebyId = createAction(

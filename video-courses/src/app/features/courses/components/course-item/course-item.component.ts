@@ -1,16 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
-import {
-  faCalendarDays,
-  faClock,
-  faStar,
-} from '@fortawesome/free-solid-svg-icons';
-
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, } from '@angular/core';
+import { faCalendarDays, faClock, faStar, } from '@fortawesome/free-solid-svg-icons';
 import { ButtonType } from '../../../../shared/enums';
 import { CourseAction, CourseInfo } from '../../types';
 

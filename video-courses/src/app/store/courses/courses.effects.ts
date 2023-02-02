@@ -3,7 +3,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs';
 import { CoursesService } from 'src/app/features/courses/services/courses.service';
 import { CourseInfo } from 'src/app/features/courses/types';
-
 import { COURSES_ACTIONS } from '.';
 
 @Injectable()

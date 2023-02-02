@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-
 import { USER_TYPES } from '../user.types';
 import { UserInfo } from 'src/app/shell/header/types';
 

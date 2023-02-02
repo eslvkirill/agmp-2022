@@ -1,17 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, } from '@angular/core';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-import {
-  selectUserName,
-  selectUserToken,
-  USER_ACTIONS,
-} from 'src/app/store/user';
+import { selectUserName, selectUserToken, USER_ACTIONS, } from 'src/app/store/user';
 import { NavigationService } from '../../../../shared/services/navigation.service';
 
 @Component({
