@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -19,9 +14,8 @@ import {
   selectCourseAuthors,
   selectCourseById,
 } from 'src/app/store/courses';
-
 import { NavigationService } from '../../../../shared/services/navigation.service';
-import { AuthorsInfo, CourseInfo } from '../../types/course.interface';
+import { AuthorsInfo, CourseInfo } from '../../types';
 
 @Component({
   selector: 'app-course-form',

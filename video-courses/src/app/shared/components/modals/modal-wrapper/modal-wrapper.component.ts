@@ -1,18 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
-import { ModalConfig } from '../../../types';
-import { MessageInformation } from '../../../types/modal.interface';
+import { MessageInformation, ModalConfig } from '../../../types';
 
 @Component({
   selector: 'app-modal-wrapper',
   templateUrl: './modal-wrapper.component.html',
-  styleUrls: ['./modal-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalWrapperComponent<T> implements OnInit {

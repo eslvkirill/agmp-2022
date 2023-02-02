@@ -1,5 +1,4 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-
 import * as CoursesReducer from './courses/courses.reducer';
 import * as UserReducer from './user/user.reducer';
 import { State } from './root-state';

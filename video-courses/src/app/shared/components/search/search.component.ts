@@ -7,15 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  map,
-  Subject,
-  Subscription,
-} from 'rxjs';
-
+import { debounceTime, distinctUntilChanged, filter, map, Subject, Subscription, } from 'rxjs';
 import { SEARCH_OPTIONS } from '../../constants';
 
 @Component({

@@ -1,11 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, } from '@angular/core';
 import { Store } from '@ngrx/store';
-
 import { selectAuthenticatedFlag, USER_ACTIONS } from '../store/user';
 
 @Component({

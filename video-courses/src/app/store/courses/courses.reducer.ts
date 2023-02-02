@@ -1,5 +1,4 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
 import { COURSES_ACTIONS } from '.';
 import { CoursesState, initialState } from './courses.state';
 

@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { LoginInfo } from 'src/app/shell/header/types';
-
 import { USER_TYPES } from '../user.types';
 
 const login = createAction(USER_TYPES.LOGIN, props<{ loginInfo: LoginInfo }>());

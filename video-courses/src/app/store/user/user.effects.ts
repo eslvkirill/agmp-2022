@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { LoginInfo, UserInfo } from 'src/app/shell/header/types';
-
 import { USER_ACTIONS } from '.';
 import { AuthService } from '../../shell/header/services/auth/auth.service';
 

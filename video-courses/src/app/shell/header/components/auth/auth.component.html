@@ -1,17 +1,17 @@
 <div class="auth">
   <div class="auth__login login">
-    <fa-icon 
+    <fa-icon
       [icon]="loginIcon"
       title="login"
       class="login__icon icon"
     ></fa-icon>
     <div class="login__label">{{ userName$ | async }}</div>
   </div>
-  <div 
+  <div
     class="auth__logoff logoff"
     (click)="logout()"
   >
-    <fa-icon 
+    <fa-icon
       [icon]="logoffIcon"
       title="logoff"
       class="logoff__icon icon"

@@ -1,5 +1,4 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
 import { USER_ACTIONS } from '.';
 import { initialState, UserState } from './user.state';
 

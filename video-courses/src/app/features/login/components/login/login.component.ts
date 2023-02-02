@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLoginErrorMessage, USER_ACTIONS } from 'src/app/store/user';
-
 import { NavigationService } from '../../../../shared/services/navigation.service';
 
 @Component({

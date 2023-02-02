@@ -1,16 +1,16 @@
 <app-shell [batchName]="courseTitleBatchName">
-  <form 
-    [formGroup]="form" 
-    [name]="formName" 
+  <form
+    [formGroup]="form"
+    [name]="formName"
     class="course-form"
   >
     <div class="course-form__content content">
       <div class="content__title title course-form__field">
         <label class="title" for="title">Title:</label>
         <mat-form-field appearance="outline">
-          <input 
+          <input
             id="title"
-            type="text" 
+            type="text"
             matInput
             class="title__input"
             maxlength="50"
@@ -18,7 +18,7 @@
             formControlName="title"
           />
         </mat-form-field>
-        <span 
+        <span
           *ngIf="validateControl('title')"
           class="error-message"
         >
@@ -28,18 +28,18 @@
       <div class="content__description description course-form__field">
         <label class="description" for="description">Description:</label>
         <mat-form-field appearance="outline">
-          <textarea 
+          <textarea
             id="description"
-            type="text" 
+            type="text"
             rows="5"
             matInput
             maxlength="500"
             class="description__input"
-            placeholder="Description"          
-            formControlName="description" 
+            placeholder="Description"
+            formControlName="description"
           ></textarea>
         </mat-form-field>
-        <span 
+        <span
           *ngIf="validateControl('description')"
           class="error-message"
         >
@@ -48,10 +48,10 @@
       </div>
       <div class="content__date date course-form__field">
         <label class="date" for="date">Date:</label>
-        <app-date-picker 
+        <app-date-picker
           formControlName="date"
         ></app-date-picker>
-        <span 
+        <span
           *ngIf="validateControl('date')"
           class="error-message"
         >
@@ -60,10 +60,10 @@
       </div>
       <div class="content__duration duration course-form__field">
         <label class="duration" for="duration">Duration:</label>
-        <app-duration-control 
+        <app-duration-control
           formControlName="duration"
         ></app-duration-control>
-        <span 
+        <span
           *ngIf="validateControl('duration')"
           class="error-message"
         >
@@ -77,7 +77,7 @@
           (setAuthors)="setAuthors($event)"
           [allAuthors]="authors$ | async"
         ></app-authors>
-        <span 
+        <span
           *ngIf="validateControl('authors')"
           class="error-message"
         >
@@ -86,8 +86,8 @@
       </div>
     </div>
     <div class="course-form__actions actions">
-      <app-button 
-        text="Save" 
+      <app-button
+        text="Save"
         [disabled]="form.invalid"
         [class.disabled]="form.invalid"
         (click)="onSave()"

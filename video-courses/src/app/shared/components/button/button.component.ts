@@ -1,16 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-import {
-  faPencil,
-  faPlus,
-  faTrash,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
-
+import { ChangeDetectionStrategy, Component, Input, OnInit, } from '@angular/core';
+import { faPencil, faPlus, faTrash, IconDefinition, } from '@fortawesome/free-solid-svg-icons';
 import { ButtonType } from '../../enums';
 
 @Component({

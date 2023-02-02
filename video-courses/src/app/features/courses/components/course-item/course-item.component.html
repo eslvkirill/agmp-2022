@@ -1,5 +1,5 @@
-<div 
-  class="course-item" 
+<div
+  class="course-item"
   [ngClass]="{ 'top-rated-course': course.isTopRated }"
   [appBorderColor]="course.date"
 >
@@ -11,10 +11,10 @@
           *ngIf="course.isTopRated"
           class="title__icon"
           [icon]="starIcon"
-         ></fa-icon>
+        ></fa-icon>
       </div>
       <div class="content__datetime datetime">
-        <div 
+        <div
           *ngIf="course.length"
           class="datetime__time time"
         >
@@ -36,7 +36,7 @@
     <div class="content__description">{{ course.description }}</div>
   </div>
   <div class="course-item__actions actions">
-    <div 
+    <div
       class="actions__item"
       *ngFor="let button of actionButtons; trackBy: trackByFn"
     >

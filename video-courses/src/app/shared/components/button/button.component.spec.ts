@@ -1,14 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import {
-  ComponentFixture,
-  ComponentFixtureAutoDetect,
-  TestBed,
-} from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
-import { ButtonType } from '../../enums/button.enum';
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed, } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
+import { ButtonType } from "../../enums";
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;

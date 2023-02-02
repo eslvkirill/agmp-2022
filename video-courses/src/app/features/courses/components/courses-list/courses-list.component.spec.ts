@@ -1,9 +1,8 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COURSES } from '../../../features/courses/constants/courses.constants';
-import { CourseInfo } from '../../types/course.interface';
+import { CourseInfo } from '../../types';
 import { CoursesListComponent } from './courses-list.component';
 import { ModalService } from '../../../../shared/services/modal.service';
 import { CoursesService } from '../../services/courses.service';

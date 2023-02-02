@@ -6,7 +6,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ShellModule } from 'src/app/shell/shell.module';
-
 import { CourseFormComponent } from './components/course-form/course-form.component';
 import { CourseItemComponent } from './components/course-item/course-item.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';

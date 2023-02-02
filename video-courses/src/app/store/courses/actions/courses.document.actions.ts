@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-
 import { COURSES_TYPES } from '../courses.types';
 
 export const coursesInit = createAction(
