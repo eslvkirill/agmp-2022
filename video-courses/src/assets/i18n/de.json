@@ -1,0 +1,47 @@
+{
+  "SHELL": {
+    "BREADCRUMB": "Kurse",
+    "LANGUAGE": {
+      "EN": "English",
+      "DE": "Deutsch"
+    },
+    "FOOTER_COPYRIGHT": "Urheberrecht &copy; Videokurse. Alle Rechte vorbehalten",
+    "HEADER": {
+      "SITE_NAME": "Videokurs",
+      "LOG_OFF": "Abmelden"
+    }
+  },
+  "SHARED": {
+    "SEARCH": "Text zum Suchen",
+    "NO_DATA": "Keine Daten.",
+    "PAGINATION": "Mehr laden"
+  },
+  "FEATURES": {
+    "COURSES": {
+      "FORM": {
+        "TITLE": "Titel",
+        "DESCRIPTION": "Beschreibung",
+        "DATE": "Datum",
+        "DURATION": "Duration",
+        "AUTHORS": "Dauer",
+        "BUTTONS": {
+          "SAVE": "Speichern",
+          "CANCEL": "Stornieren"
+        }
+      },
+      "ADD_BTN": "Kurs hinzufügen",
+      "REQUIRED_MSG": "erforderlich"
+    },
+    "LOGIN": {
+      "CAPTION": "Anmeldung",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Passwort",
+      "PASSWORD_ACTION": "Passwort vergessen?",
+      "PLACEHOLDERS": {
+        "EMAIL": "Email eingeben",
+        "PASSWORD": "Passwort eingeben"
+      },
+      "REQUIRED_MSG": "erforderlich"
+    }
+  }
+}

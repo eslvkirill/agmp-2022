@@ -5,6 +5,7 @@ import { ShellModule } from 'src/app/shell/shell.module';
 import { MaterialModule } from '../../shared/material.module';
 import { LoginComponent } from './components/login/login.component';
 import { LoginRoutingModule } from './login-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -13,6 +14,7 @@ import { LoginRoutingModule } from './login-routing.module';
     LoginRoutingModule,
     FormsModule,
     ShellModule,
+    SharedModule,
     MaterialModule,
   ],
   exports: [LoginComponent],

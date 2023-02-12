@@ -1,0 +1,47 @@
+{
+  "SHELL": {
+    "BREADCRUMB": "Courses",
+    "LANGUAGE": {
+      "EN": "English",
+      "DE": "Deutsch"
+    },
+    "FOOTER_COPYRIGHT": "Copyright &copy; Videocourses. All rights reserved",
+    "HEADER": {
+      "SITE_NAME": "Video course",
+      "LOG_OFF": "Log off"
+    }
+  },
+  "SHARED": {
+    "SEARCH": "Text to search",
+    "NO_DATA": "No data.",
+    "PAGINATION": "Load more"
+  },
+  "FEATURES": {
+    "COURSES": {
+      "FORM": {
+        "TITLE": "Title",
+        "DESCRIPTION": "Description",
+        "DATE": "Date",
+        "DURATION": "Duration",
+        "AUTHORS": "Authors",
+        "BUTTONS": {
+          "SAVE": "Save",
+          "CANCEL": "Cancel"
+        }
+      },
+      "ADD_BTN": "Add course",
+      "REQUIRED_MSG": "is required"
+    },
+    "LOGIN": {
+      "CAPTION": "Login",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Password",
+      "PASSWORD_ACTION": "Forgot password?",
+      "PLACEHOLDERS": {
+        "EMAIL": "Enter e-mail",
+        "PASSWORD": "Enter password"
+      },
+      "REQUIRED_MSG": "required"
+    }
+  }
+}
