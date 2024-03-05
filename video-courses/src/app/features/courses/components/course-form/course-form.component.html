@@ -6,7 +6,12 @@
   >
     <div class="course-form__content content">
       <div class="content__title title course-form__field">
-        <label class="title" for="title">Title:</label>
+        <label
+          class="title"
+          for="title"
+        >
+          {{ 'FEATURES.COURSES.FORM.TITLE' | translate }}:
+        </label>
         <mat-form-field appearance="outline">
           <input
             id="title"
@@ -14,7 +19,7 @@
             matInput
             class="title__input"
             maxlength="50"
-            placeholder="Title"
+            placeholder="{{ 'FEATURES.COURSES.FORM.TITLE' | translate }}"
             formControlName="title"
           />
         </mat-form-field>
@@ -22,11 +27,16 @@
           *ngIf="validateControl('title')"
           class="error-message"
         >
-          Title is required
+          {{ 'FEATURES.COURSES.FORM.TITLE' | translate }} {{ requiredMsg }}
         </span>
       </div>
       <div class="content__description description course-form__field">
-        <label class="description" for="description">Description:</label>
+        <label
+          class="description"
+          for="description"
+        >
+          {{ 'FEATURES.COURSES.FORM.DESCRIPTION' | translate }}:
+        </label>
         <mat-form-field appearance="outline">
           <textarea
             id="description"
@@ -35,7 +45,7 @@
             matInput
             maxlength="500"
             class="description__input"
-            placeholder="Description"
+            placeholder="{{ 'FEATURES.COURSES.FORM.DESCRIPTION' | translate }}"
             formControlName="description"
           ></textarea>
         </mat-form-field>
@@ -43,11 +53,16 @@
           *ngIf="validateControl('description')"
           class="error-message"
         >
-          Description is required
+          {{ 'FEATURES.COURSES.FORM.DESCRIPTION' | translate }} {{ requiredMsg }}
         </span>
       </div>
       <div class="content__date date course-form__field">
-        <label class="date" for="date">Date:</label>
+        <label
+          class="date"
+          for="date"
+        >
+          {{ 'FEATURES.COURSES.FORM.DATE' | translate }}:
+        </label>
         <app-date-picker
           formControlName="date"
         ></app-date-picker>
@@ -55,11 +70,16 @@
           *ngIf="validateControl('date')"
           class="error-message"
         >
-          Date is required
+          {{ 'FEATURES.COURSES.FORM.DATE' | translate }} {{ requiredMsg }}
         </span>
       </div>
       <div class="content__duration duration course-form__field">
-        <label class="duration" for="duration">Duration:</label>
+        <label
+          class="duration"
+          for="duration"
+        >
+          {{ 'FEATURES.COURSES.FORM.DURATION' | translate }}:
+        </label>
         <app-duration-control
           formControlName="duration"
         ></app-duration-control>
@@ -67,11 +87,16 @@
           *ngIf="validateControl('duration')"
           class="error-message"
         >
-          Duration is required
+          {{ 'FEATURES.COURSES.FORM.DURATION' | translate }} {{ requiredMsg }}
         </span>
       </div>
       <div class="content__authors authors course-form__field">
-        <label class="authors" for="authors">Authors:</label>
+        <label
+          class="authors"
+          for="authors"
+        >
+          {{ 'FEATURES.COURSES.FORM.AUTHORS' | translate }}:
+        </label>
         <app-authors
           formControlName="authors"
           (setAuthors)="setAuthors($event)"
@@ -81,18 +106,21 @@
           *ngIf="validateControl('authors')"
           class="error-message"
         >
-          Authors is required
+          {{ 'FEATURES.COURSES.FORM.AUTHORS' | translate }} {{ requiredMsg }}
         </span>
       </div>
     </div>
     <div class="course-form__actions actions">
       <app-button
-        text="Save"
+        text="{{ 'FEATURES.COURSES.FORM.BUTTONS.SAVE' | translate }}"
         [disabled]="form.invalid"
         [class.disabled]="form.invalid"
         (click)="onSave()"
       ></app-button>
-      <app-button text="Cancel" (click)="onCancel()"></app-button>
+      <app-button
+        text="{{ 'FEATURES.COURSES.FORM.BUTTONS.CANCEL' | translate }}"
+        (click)="onCancel()"
+      ></app-button>
     </div>
   </form>
 </app-shell>

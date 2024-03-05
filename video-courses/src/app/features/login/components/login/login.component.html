@@ -1,12 +1,25 @@
 <app-shell>
   <mat-card class="login-page">
-    <mat-card-title class="login-page__title">Login</mat-card-title>
+    <mat-card-title
+      class="login-page__title"
+    >
+      {{ 'FEATURES.LOGIN.CAPTION' | translate }}
+    </mat-card-title>
     <mat-card-content class="login-page__content">
       <form #loginForm="ngForm" class="login-page__form form">
         <div class="form__email email">
           <div class="email__header">
-            <label class="email__header_title" for="email">E-mail:</label>
-            <p class="email__header_required required-asterisk">required</p>
+            <label
+              class="email__header_title"
+              for="email"
+            >
+              {{ 'FEATURES.LOGIN.EMAIL' | translate }}:
+            </label>
+            <p
+              class="email__header_required required-asterisk"
+            >
+              {{ 'FEATURES.LOGIN.REQUIRED_MSG' | translate }}
+            </p>
           </div>
           <mat-form-field
             class="email__input"
@@ -19,14 +32,23 @@
               required
               [(ngModel)]="user.email"
               matInput
-              placeholder="Enter e-mail"
+              placeholder="{{ 'FEATURES.LOGIN.PLACEHOLDERS.EMAIL' | translate }}"
             />
           </mat-form-field>
         </div>
         <div class="form__password password">
           <div class="password__header">
-            <label class="password__header_title" for="password">Password:</label>
-            <p class="password__header_required required-asterisk">required</p>
+            <label
+              class="password__header_title"
+              for="password"
+            >
+              {{ 'FEATURES.LOGIN.PASSWORD' | translate }}:
+            </label>
+            <p
+              class="password__header_required required-asterisk"
+            >
+              {{ 'FEATURES.LOGIN.REQUIRED_MSG' | translate }}
+            </p>
           </div>
           <mat-form-field
             class="password__input"
@@ -39,7 +61,7 @@
               required
               [(ngModel)]="user.password"
               matInput
-              placeholder="Enter password"
+              placeholder="{{ 'FEATURES.LOGIN.PLACEHOLDERS.PASSWORD' | translate }}"
             />
           </mat-form-field>
         </div>
@@ -49,7 +71,7 @@
             href="#"
             class="actions__password"
           >
-            Forgot password?
+            {{ 'FEATURES.LOGIN.PASSWORD_ACTION' | translate }}
           </a>
           <button
             type="submit"
@@ -59,7 +81,7 @@
             [disabled]="loginForm.invalid"
             (click)="login()"
           >
-            Login
+            {{ 'FEATURES.LOGIN.CAPTION' | translate }}
           </button>
         </div>
       </form>

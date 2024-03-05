@@ -26,6 +26,8 @@
     "@ngrx/effects": "^14.2.0",
     "@ngrx/store": "^14.2.0",
     "@ngrx/store-devtools": "^14.2.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/node": "^18.11.18",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.5.0",

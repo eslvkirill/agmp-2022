@@ -16,6 +16,9 @@ import { MaterialModule } from './material.module';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { OrderByPipe } from './pipes/order-by/order-by.pipe';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const COMPONENTS = [
   SearchComponent,
@@ -34,7 +37,20 @@ const exportedDeclarations = [...COMPONENTS, ...DIRECTIVES, ...PIPES];
 
 @NgModule({
   declarations: exportedDeclarations,
-  imports: [CommonModule, FontAwesomeModule, FormsModule, MaterialModule],
-  exports: [exportedDeclarations],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FormsModule,
+    MaterialModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+        deps: [HttpClient]
+      }
+    }),
+  ],
+  exports: [exportedDeclarations, TranslateModule],
 })
 export class SharedModule {}

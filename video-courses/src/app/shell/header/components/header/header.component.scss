@@ -6,4 +6,10 @@
   padding: 20px 60px 20px 90px;
   background-color: $shell-bg-color;
   color: $secondary-color;
+
+  .left-side {
+    @include flex-vertical();
+    justify-content: space-between;
+    width: 343px;
+  }
 }

@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { NEW_COURSE } from 'src/app/shared/constants';
 import { getRandomNumber } from 'src/app/shared/utils/random.utils';
 import {
@@ -25,6 +26,7 @@ import { AuthorsInfo, CourseInfo } from '../../types';
 })
 export class CourseFormComponent implements OnInit {
   courseTitleBatchName: string;
+  requiredMsg: string;
 
   private course: CourseInfo | null;
   private courseId: string;
@@ -55,12 +57,14 @@ export class CourseFormComponent implements OnInit {
     private store: Store,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private translate: TranslateService,
     private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
     this.initCourse();
     this.initAuthors();
+    this.initTranslations();
   }
 
   private get getCourseDataOnChange(): CourseInfo {
@@ -127,6 +131,11 @@ export class CourseFormComponent implements OnInit {
     this.dateControl?.setValue(new Date(date));
     this.authorsControl?.setValue(authors);
     this.isTopRatedControl?.setValue(isTopRated);
+  }
+
+  private initTranslations(): void {
+    this.translate.get(['FEATURES.COURSES.REQUIRED_MSG'])
+      .subscribe(translations => this.requiredMsg = translations['FEATURES.COURSES.REQUIRED_MSG']);
   }
 
   private initControls(): void {

@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed, } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import { ButtonType } from "../../enums";
+import { ButtonType } from '../../enums';
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
