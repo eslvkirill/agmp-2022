@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../../shared/shared.module';
 import { AuthComponent } from './components/auth/auth.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { HeaderComponent } from './header.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [HeaderComponent, AuthComponent, LogoComponent],

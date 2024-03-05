@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BACKEND_URL, ENDPOINT } from 'src/app/shared/constants';
-
 import { AuthToken, LoginInfo, UserInfo } from '../../types';
 
 const TOKEN_KEY = 'token';
@@ -19,14 +18,16 @@ export class AuthService {
     return localStorage.getItem(TOKEN_KEY);
   }
 
+  set setAuthToken(token: string) {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+
   get isAuthenticated(): boolean {
     return !!this.getAuthToken;
   }
 
   login(data: LoginInfo): Observable<AuthToken> {
-    return this.http
-      .post<AuthToken>(`${this.authApiPrefix}/login`, data)
-      .pipe(tap((response) => localStorage.setItem(TOKEN_KEY, response.token)));
+    return this.http.post<AuthToken>(`${this.authApiPrefix}/login`, data);
   }
 
   getUserInfo(token: string | null): Observable<UserInfo> {

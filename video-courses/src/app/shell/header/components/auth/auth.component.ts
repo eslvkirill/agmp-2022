@@ -1,15 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, } from '@angular/core';
 import { faSignOut, faUserLarge } from '@fortawesome/free-solid-svg-icons';
-import { map, Observable } from 'rxjs';
-
+import { Store } from '@ngrx/store';
+import { selectUserName, selectUserToken, USER_ACTIONS, } from 'src/app/store/user';
 import { NavigationService } from '../../../../shared/services/navigation.service';
-import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -23,31 +16,30 @@ export class AuthComponent implements OnInit {
   readonly loginIcon = faUserLarge;
   readonly logoffIcon = faSignOut;
 
-  userName$: Observable<string>;
+  readonly userName$ = this.store.select(selectUserName);
+  readonly token$ = this.store.select(selectUserToken);
 
   constructor(
-    private authService: AuthService,
+    private store: Store,
     private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
-    this.initUserName();
+    this.initAuthData();
   }
 
   logout(): void {
-    this.authService.logout();
     this.setAuth.emit();
+    this.store.dispatch(USER_ACTIONS.logoutUser());
     this.navigationService.redirectToLoginPage();
   }
 
-  private initUserName(): void {
-    this.userName$ = this.authService
-      .getUserInfo(this.authService.getAuthToken)
-      .pipe(
-        map((userInfo) => {
-          const { first, last } = userInfo.name;
-          return `${first} ${last}`;
-        })
-      );
+  private initAuthData(): void {
+    this.store.dispatch(USER_ACTIONS.getAuthToken());
+    this.token$.subscribe((token) => this.initUserName(token));
+  }
+
+  private initUserName(token: string | null): void {
+    this.store.dispatch(USER_ACTIONS.getUserInfo({ token }));
   }
 }

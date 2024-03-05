@@ -1,20 +1,19 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { catchError, Observable, throwError } from 'rxjs';
-import { AuthService } from 'src/app/shell/header/services/auth/auth.service';
-
+import { selectUserToken, USER_ACTIONS } from 'src/app/store/user';
 import { HttpErrorStatus } from '../enums';
 import { NavigationService } from '../services/navigation.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  private readonly token$ = this.store.select(selectUserToken);
+
+  private token: string | null;
+
   constructor(
-    private authService: AuthService,
+    private store: Store,
     private navigationService: NavigationService
   ) {}
 
@@ -35,12 +34,13 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private setAuthToken(request: HttpRequest<unknown>): HttpRequest<unknown> {
-    const token = this.authService.getAuthToken;
+    this.store.dispatch(USER_ACTIONS.getAuthToken());
+    this.token$.subscribe((token) => (this.token = token));
 
-    if (!token) return request;
+    if (!this.token) return request;
 
     return request.clone({
-      setHeaders: { Authorization: `Token ${token}` },
+      setHeaders: { Authorization: `Token ${this.token}` },
     });
   }
 }

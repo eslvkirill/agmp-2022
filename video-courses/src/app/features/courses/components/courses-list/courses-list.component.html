@@ -1,0 +1,12 @@
+<app-no-data
+  *ngIf="!courses?.length"
+  [message]="noDataMessage"
+></app-no-data>
+<div *ngFor="let course of courses; trackBy: trackByFn">
+  <app-course-item
+    class="course"
+    [course]="course"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)"
+  ></app-course-item>
+</div>

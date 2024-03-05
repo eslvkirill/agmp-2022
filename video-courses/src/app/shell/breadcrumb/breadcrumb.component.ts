@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
 import { NavigationService } from '../../shared/services/navigation.service';
 
 @Component({

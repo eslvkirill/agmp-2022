@@ -1,0 +1,9 @@
+@use "../../../../../styles/helpers/index" as *;
+
+.header {
+  @include flex-vertical();
+  justify-content: space-between;
+  padding: 20px 60px 20px 90px;
+  background-color: $shell-bg-color;
+  color: $secondary-color;
+}

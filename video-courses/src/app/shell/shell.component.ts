@@ -1,11 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-
-import { AuthService } from './header/services/auth/auth.service';
+import { ChangeDetectionStrategy, Component, Input, OnInit, } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectAuthenticatedFlag, USER_ACTIONS } from '../store/user';
 
 @Component({
   selector: 'app-shell',
@@ -16,15 +11,15 @@ import { AuthService } from './header/services/auth/auth.service';
 export class ShellComponent implements OnInit {
   @Input() batchName?: string;
 
-  isAuthenticated: boolean;
+  readonly authenticatedFlag$ = this.store.select(selectAuthenticatedFlag);
 
-  constructor(private authService: AuthService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.setAuth();
   }
 
   setAuth(): void {
-    this.isAuthenticated = this.authService.isAuthenticated;
+    this.store.dispatch(USER_ACTIONS.isAuthenticated());
   }
 }
