@@ -10,6 +10,7 @@ import { ButtonType } from '../../enums';
 })
 export class ButtonComponent implements OnInit {
   @Input() text: string;
+  @Input() disabled: boolean;
   @Input() type: ButtonType = ButtonType.Common;
 
   icon: IconDefinition | null;

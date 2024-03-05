@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { LoginInfo, UserInfo } from 'src/app/shell/header/types';
 import { USER_ACTIONS } from '.';
 import { AuthService } from '../../shell/header/services/auth/auth.service';
-import { LoginInfo, UserInfo } from 'src/app/shell/header/types';
 
 @Injectable()
 export class UserEffects {
@@ -34,13 +34,14 @@ export class UserEffects {
     return this.actions$.pipe(
       ofType(USER_ACTIONS.login.type),
       switchMap((action) =>
-        this.authService
-          .login(action.loginInfo)
-          .pipe(
-            map((response) =>
-              USER_ACTIONS.setAuthToken({ token: response.token })
-            )
+        this.authService.login(action.loginInfo).pipe(
+          map((response) =>
+            USER_ACTIONS.setAuthToken({ token: response.token })
+          ),
+          catchError((errorMessage: ErrorEvent) =>
+            of(USER_ACTIONS.loginError({ errorMessage: errorMessage.error }))
           )
+        )
       )
     );
   });

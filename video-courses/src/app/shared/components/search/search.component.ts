@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, Output, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, distinctUntilChanged, filter, map, Subject, Subscription, } from 'rxjs';
 import { SEARCH_OPTIONS } from '../../constants';
@@ -10,6 +17,8 @@ import { SEARCH_OPTIONS } from '../../constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnDestroy {
+  @Input() searchMinLength?: number;
+
   @Output() search: EventEmitter<string> = new EventEmitter();
 
   readonly searchIcon = faSearch;
@@ -29,7 +38,11 @@ export class SearchComponent implements OnDestroy {
     this.subscription = this.keyUp
       .pipe(
         map((event) => (event?.target as HTMLInputElement)?.value.trim()),
-        filter((event) => !event || event.length >= SEARCH_OPTIONS.MIN_LENGTH),
+        filter(
+          (event) =>
+            !event ||
+            event.length >= (this.searchMinLength || SEARCH_OPTIONS.MIN_LENGTH)
+        ),
         debounceTime(SEARCH_OPTIONS.DEBOUNCE),
         distinctUntilChanged()
       )

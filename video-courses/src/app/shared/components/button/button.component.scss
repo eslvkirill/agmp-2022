@@ -21,6 +21,10 @@
     }
   }
 
+  .disabled {
+    cursor: not-allowed;
+  }
+
   &:hover {
     transform: scale(0.97);
     transition: 0.3s;

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { USER_ACTIONS } from 'src/app/store/user';
+import { selectLoginErrorMessage, USER_ACTIONS } from 'src/app/store/user';
 import { NavigationService } from '../../../../shared/services/navigation.service';
 
 @Component({
@@ -10,8 +10,12 @@ import { NavigationService } from '../../../../shared/services/navigation.servic
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  emailValue: string;
-  passwordValue: string;
+  readonly user = {
+    email: '',
+    password: '',
+  };
+
+  readonly errorMessage$ = this.store.select(selectLoginErrorMessage);
 
   constructor(
     private store: Store,
@@ -19,13 +23,11 @@ export class LoginComponent {
   ) {}
 
   login(): void {
-    if (!this.emailValue || !this.passwordValue) return;
-
     this.store.dispatch(
       USER_ACTIONS.login({
         loginInfo: {
-          login: this.emailValue,
-          password: this.passwordValue,
+          login: this.user.email,
+          password: this.user.password,
         },
       })
     );
