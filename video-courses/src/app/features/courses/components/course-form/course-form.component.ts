@@ -1,20 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { NEW_COURSE } from 'src/app/shared/constants';
 import { getRandomNumber } from 'src/app/shared/utils/random.utils';
-import {
-  COURSES_ACTIONS,
-  selectCourseAuthors,
-  selectCourseById,
-} from 'src/app/store/courses';
+import { COURSES_ACTIONS, selectCourseAuthors, selectCourseById } from 'src/app/store/courses';
 import { NavigationService } from '../../../../shared/services/navigation.service';
 import { AuthorsInfo, CourseInfo } from '../../types';
 

@@ -5,4 +5,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  // constructor(@Inject(PLATFORM_ID) private platformId: Object) {  }
+
+  ngOnInit() {
+    // Client only
+    // if (isPlatformBrowser(this.platformId)) {
+    //   const item = { key: 'value' };
+    //   localStorage.setItem('itemIndex', JSON.stringify(item));
+    // }
+  }
+}
